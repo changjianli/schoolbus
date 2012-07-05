@@ -29,8 +29,8 @@ public class SchoolBusModel {
 			businfo.setStartTime(cursor.getString(cursor.getColumnIndex("start_time")));
 			businfo.setEndTime(cursor.getString(cursor.getColumnIndex("end_time")));
 			businfo.setBusType(cursor.getInt(cursor.getColumnIndex("bus_type")));
-			businfo.setFromDesc(cursor.getString(cursor.getColumnIndex("from_desc")));
-			businfo.setToDesc(cursor.getString(cursor.getColumnIndex("to_desc")));
+			businfo.setFrom( new Place(from,cursor.getString(cursor.getColumnIndex("from_desc"))));
+			businfo.setTo( new Place(from,cursor.getString(cursor.getColumnIndex("to_desc"))));
 		}
 		return buslist;
 	}

@@ -7,13 +7,11 @@ public class BusInfo {
 	public static final int BUS_TYPE_WEEKDAY=1;
 	public static final int BUS_TYPE_NOWEEKDAY=2;
 	
-	
 	private int id;
 	private Place from;
 	private String startTime;
 	private String endTime;
-	private String fromDesc;
-	private String toDesc;
+	private Place to;
 	private int busType;
 	private String remark;
 	private ArrayList<String> busBetween;
@@ -30,12 +28,6 @@ public class BusInfo {
 	public String getEndTime() {
 		return endTime;
 	}
-	public Place getFrom() {
-		return from;
-	}
-	public String getFromDesc() {
-		return fromDesc;
-	}
 	public int getId() {
 		return id;
 	}
@@ -44,9 +36,6 @@ public class BusInfo {
 	}
 	public String getStartTime() {
 		return startTime;
-	}
-	public String getToDesc() {
-		return toDesc;
 	}
 	public void setBetweenDesc(ArrayList<String> betweenDesc) {
 		this.betweenDesc = betweenDesc;
@@ -63,9 +52,6 @@ public class BusInfo {
 	public void setFrom(Place from) {
 		this.from = from;
 	}
-	public void setFromDesc(String fromDesc) {
-		this.fromDesc = fromDesc;
-	}
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -75,9 +61,26 @@ public class BusInfo {
 	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
-	public void setToDesc(String toDesc) {
-		this.toDesc = toDesc;
+	public Place getTo() {
+		return to;
 	}
+	public void setTo(Place to) {
+		this.to = to;
+	}
+	public Place getFrom() {
+		return from;
+	}
+	
+	public String getFullFrom(){
+		return from.getFullName();
+	}
+	
+	public String getFullTo(){
+		return to.getFullName();
+	}
+	
+	
+	
 	
 	
 }
