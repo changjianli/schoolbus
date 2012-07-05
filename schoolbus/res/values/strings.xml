@@ -4,5 +4,29 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">设置</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="bus_start">起点</string>
+    <string name="bus_end">终点</string>
+    <string name="bus_time">时间</string>
+    <string name="bus_title">校车查询系统</string>
+    <string name="time_work">工作日</string>
+    <string name="time_nowork">非工作日</string>
+    <string name="start_station">起始站</string>
+    <string name="end_station">终点站</string>
+     <string-array
+         name="bus_start_array"
+         >
+         <item>中心</item>
+         <item>兴隆山</item>
+         <item>千佛山</item>
+         <item>趵突泉</item>
+         <item>软件园</item>
+         <item>洪家楼</item>
+         <item>三宿舍 </item>
+         <item>五宿舍</item>
+         <item>南山小区</item>
+         <item>马家庄</item>
+         <item>舜玉小区</item>
+         <item>燕山宿舍</item>
+     </string-array>
 
 </resources>
