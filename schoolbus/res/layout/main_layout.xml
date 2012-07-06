@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:layout_gravity="center"
+        android:gravity="center"
+            />
+    </LinearLayout>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+	>
+        <TextView
+            android:id="@+id/main_layout_textview_start"
+            android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:padding="@dimen/padding_small" 
+            android:text="@string/bus_start"
+            />
+        <Spinner
+            android:id="@+id/main_layout_spinner_start"
+            android:layout_height="wrap_content"
+            android:layout_width="@dimen/spinner_length"
+            android:layout_toRightOf="@id/main_layout_textview_start"
+            android:entries="@array/bus_start_array"
+            />
+        
+        <Spinner
+            android:id="@+id/main_layout_spinner_end"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_width="@dimen/spinner_length"
+            android:entries="@array/bus_start_array"
+            />
+        <TextView
+            android:id="@+id/main_layout_textview_end"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:padding="@dimen/padding_small" 
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:text="@string/bus_end"
+            android:layout_toLeftOf="@id/main_layout_spinner_end"
+            />
+    </RelativeLayout>
+    
+    <RelativeLayout 
+    	    android:layout_width="fill_parent"
+    	    android:layout_height="wrap_content"
+    	    android:paddingTop="3dp"    
+    	    >
+    	<RadioGroup 
+    	    android:padding="@dimen/padding_large"
+    	    android:id="@+id/time_group"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:layout_alignParentLeft="true"
+    	    android:orientation="horizontal"
+    	    >
+    	    <RadioButton 
+    	        android:id="@+id/bus_time_work"
+    	        android:layout_width="wrap_content"
+    	        android:layout_height="wrap_content"
+    	        android:text="@string/time_work"
+    	        android:checked="true"
+    	        />
+    	    <RadioButton 
+    	        android:id="@+id/bus_time_nowork"
+    	        android:layout_width="wrap_content"
+    	        android:layout_height="wrap_content"
+    	        android:text="@string/time_nowork"
+    	        />
+    	</RadioGroup>
+    	<Button 
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:id="@+id/bus_search_button"
+    	    android:padding="@dimen/padding_large"
+    	    android:textAppearance="@android:style/TextAppearance.Medium"
+    	    android:text="@string/search"
+    	    android:layout_alignParentRight="true"
+    	    />
+    	</RelativeLayout>
+    
+    
+    <LinearLayout
+        android:id="@+id/main_layout_linearlayout_result"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+         >
+    	  <LinearLayout 
+	        android:layout_height="wrap_content"
+	        android:layout_width="match_parent"
+	        >
+    	      <TextView 
+		        android:layout_height="wrap_content"
+		        android:layout_width="@dimen/text_length"
+		        android:text="@string/start_station"
+		        android:textAppearance="@android:style/TextAppearance.Medium"
+		        android:gravity="center"
+		        android:layout_gravity="center"
+    	          />
+    	      
+    	      <TextView 
+		        android:layout_height="wrap_content"
+		        android:layout_width="@dimen/text_length"
+		        android:text="@string/time_start"
+		        android:textAppearance="@android:style/TextAppearance.Medium"
+		        android:gravity="center"
+		        android:layout_gravity="center"
+    	          />
+    	      
+    	      <TextView 
+		        android:layout_height="wrap_content"
+		        android:layout_width="fill_parent"
+		        android:text="@string/remark"
+		        android:textAppearance="@android:style/TextAppearance.Medium"
+		        android:gravity="center"
+		        android:layout_gravity="center"
+    	          />
+    	  </LinearLayout>
+    </LinearLayout>
+
+	        
+     <ListView 
+         android:id="@+id/main_layout_listview"
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent"
+         android:scrollbars="vertical"
+     />
+    
+</LinearLayout>

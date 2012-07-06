@@ -20,7 +20,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 		// TODO Auto-generated constructor stub
 	}
 	public DataBaseHelper(Context context){	
-		super(context,Environment.getDataDirectory()+File.separator+DATABASE_FILE_NAME,null,VERSION);
+		super(context,DATABASE_FILE_NAME,null,VERSION);
 		this.context=context;
 	}
 
@@ -28,7 +28,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
 		try {
-			File file=new File(Environment.getDataDirectory()+File.separator+DATABASE_FILE_NAME);
+			File file=new File(DATABASE_FILE_NAME);
 			file.createNewFile();
 			FileUtils.copyfile(context.getAssets().open(DATABASE_FILE_NAME),file, false);
 			

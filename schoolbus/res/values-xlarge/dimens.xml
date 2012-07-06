@@ -3,7 +3,7 @@
     <dimen name="padding_small">8dp</dimen>
     <dimen name="padding_medium">16dp</dimen>
     <dimen name="padding_large">16dp</dimen>
-	<dimen name="spinner_length">180dp</dimen>
-	<dimen name="text_length">150dp</dimen>
+	<dimen name="spinner_length">290dp</dimen>
+	<dimen name="text_length">230dp</dimen>
 
 </resources>

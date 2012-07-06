@@ -23,11 +23,11 @@ public class Place {
 	}
 	
 	public String getFullName(){
-		return placeName+placeDesc;
+		return placeDesc==null ? placeName : placeName + placeDesc;
 	}
 	@Override
 	public String toString() {
-		return placeName + placeDesc;
+		return getFullName();
 	}
 	
 	

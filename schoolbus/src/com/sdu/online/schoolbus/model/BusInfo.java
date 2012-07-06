@@ -78,9 +78,13 @@ public class BusInfo {
 	public String getFullTo(){
 		return to.getFullName();
 	}
-	
-	
-	
-	
+	@Override
+	public String toString() {
+		return "BusInfo [id=" + id + ", from=" + from + ", startTime="
+				+ startTime + ", endTime=" + endTime + ", to=" + to
+				+ ", busType=" + busType + ", remark=" + remark
+				+ ", busBetween=" + busBetween + ", betweenDesc=" + betweenDesc
+				+ "]";
+	}
 	
 }
