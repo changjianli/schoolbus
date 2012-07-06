@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+        android:id="@+id/search_layout_top"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/search_top_height"
+        >
+        <LinearLayout
+            android:id="@+id/search_layout_top_left"
+            android:layout_height="fill_parent"
+            android:layout_width="0dp"
+            android:layout_weight="2.0"
+            android:orientation="vertical" 
+            >
+            <TextView
+            android:layout_height="@dimen/search_top_text_height"
+            android:layout_width="fill_parent"
+            android:textColor="@color/main_color_blue"
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:layout_marginTop="@dimen/padding_medium"
+            android:layout_marginBottom="@dimen/padding_large"
+            android:layout_marginLeft="@dimen/padding_medium"
+            android:layout_marginRight="@dimen/padding_large"
+            android:text="@string/schedule_tip_summer"
+            android:gravity="center"
+            />
+            <TextView
+             android:id="@+id/search_layout_weekday"
+            android:layout_height="@dimen/search_top_text_height"
+            android:layout_width="fill_parent"
+            android:background="@color/main_color_blue"
+            android:layout_marginLeft="@dimen/padding_medium"
+            android:layout_marginBottom="@dimen/padding_large"
+            android:layout_marginRight="@dimen/padding_large"
+            android:text="@string/time_nowork"
+            android:textColor="@color/main_color_light"
+            android:gravity="center"
+            android:textSize="@dimen/choose_weekday_text_size"
+            />
+        </LinearLayout>
+        
+        <TextView
+            android:id="@+id/search_layout_choose_des"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1.49"
+            android:text="@string/choose_des_tip"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textColor="@color/main_color_light"
+            android:gravity="center"
+            android:background="@color/main_color_blue" />
+
+        <ImageView
+            android:id="@+id/search_layout_search_image"
+            android:layout_height="40dp"
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_gravity="bottom"
+            android:src="@drawable/point_selected" 
+            />
+        
+    </LinearLayout>
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:padding="@dimen/padding_xlarge"
+        >
+        <ListView
+            android:id="@+id/search_layout_listview"
+            style="@style/ListView.style.Main"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:scrollbars="vertical" 
+            />
+         <ScrollView
+       		 android:visibility="gone"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             android:id="@+id/search_layout_scrollview" 
+             >
+             <include layout="@layout/detail_layout"/>
+         </ScrollView>
+    </RelativeLayout>
+
+</LinearLayout>

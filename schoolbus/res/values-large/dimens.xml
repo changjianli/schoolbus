@@ -6,4 +6,10 @@
 	<dimen name="spinner_length">180dp</dimen>
 	<dimen name="text_length">150dp</dimen>
 
+	<dimen name="cell_height">140dp</dimen>
+	<dimen name="cell_width">140dp</dimen>
+	<dimen name="cell_margin_left">40dp</dimen>
+	<dimen name="cell_margin_top">30dp</dimen>
+	<dimen name="cell_margin_bottom">20dp</dimen>
+	<dimen name="cell_margin_center">20dp</dimen>
 </resources>

@@ -19,18 +19,42 @@
      <string-array
          name="bus_start_array"
          >
-         <item>中心校区</item>
-         <item>兴隆山校区</item>
-         <item>千佛山校区</item>
-         <item>趵突泉校区</item>
-         <item>软件园校区</item>
-         <item>洪家楼校区</item>
-         <item>三宿舍 </item>
-         <item>五宿舍</item>
-         <item>南山小区</item>
-         <item>马家庄</item>
-         <item>舜玉小区</item>
-         <item>燕山宿舍</item>
+         <item>中心\n校区</item>
+         <item>兴隆山\n校区</item>
+         <item>千佛山\n校区</item>
+         <item>趵突泉\n校区</item>
+         <item>软件园\n校区</item>
+         <item>洪家楼\n校区</item>
+         <item>三宿舍 \n</item>
+         <item>五宿舍\n</item>
+         <item>南山\n小区</item>
+         <item>马家庄\n</item>
+         <item>舜玉\n小区</item>
+         <item>燕山\n宿舍</item>
      </string-array>
 
+     
+     <string name="start_palce_xing">兴隆山\n校区</string>
+     <string name="start_palce_zhong">中心\n校区</string>
+     <string name="start_palce_qian">千佛山\n校区</string>
+     <string name="start_palce_bao">趵突泉\n校区</string>
+     <string name="start_palce_hong">洪家楼\n校区</string>
+     <string name="start_palce_ruan">软件园\n校区</string>
+     
+     <string name="start_palce_san">三宿舍\n</string>
+     <string name="start_palce_wu">五宿舍\n</string>
+     <string name="start_palce_nan">南山\n小区</string>
+     <string name="start_palce_ma">马家庄\n</string>
+     <string name="start_palce_shun">舜玉\n小区</string>
+     <string name="start_palce_yan">燕山\n宿舍</string>
+     
+     <string name="schedule_tip_summer">[夏季时刻表]</string>
+     <string name="schedule_tip_winter">[冬季时刻表]</string>
+     <string name="choose_des_tip">选择\n目的地</string>
+     
+     <string name="detail_start_time">发车时间</string>
+     <string name="detail_start_place">发车地点</string>
+     <string name="detail_between_place">途经地点</string>
+     <string name="detail_end_place">终点站</string>
+     <string name="detail_remark">备注</string>
 </resources>

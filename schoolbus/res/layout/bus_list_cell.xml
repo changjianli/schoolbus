@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_color_blue"
+     >
+	
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="1.0"
+        android:id="@+id/start_text"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="12:00"
+        android:textColor="@color/main_color_light"
+        android:textSize="@dimen/detail_text_size"
+        android:padding="@dimen/list_view_padding"
+        />
+	<TextView
+        android:layout_height="wrap_content"
+        android:padding="@dimen/list_view_padding"
+        android:layout_width="0dp"
+        android:layout_weight="2.0"
+        android:id="@+id/time_text"
+        android:gravity="center"
+        android:layout_gravity="center"  
+        android:text="兴隆山校区"
+        android:textColor="@color/main_color_light"
+        android:textSize="@dimen/detail_text_size"
+        />
+	<TextView
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="1.0"
+        android:id="@+id/remark_text"
+        android:gravity="center"
+        android:layout_gravity="center" 
+        android:text="详细>>"
+        android:textColor="@color/main_color_light"
+        android:textSize="@dimen/detail_text_size"
+        android:padding="@dimen/list_view_padding"
+        />
+</LinearLayout>
