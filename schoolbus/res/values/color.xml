@@ -3,5 +3,8 @@
     <color name="main_color_blue">#5692CD</color>
     <color name="main_color_light">#ffffff</color>
     <color name="main_color_alpha">#ff000000</color>
+    <color name="main_color_dark">#ffffff</color>
+    <color name="main_color_text_theme">#5692CD</color>
+    
     <!-- 99D9EA   #5692CD -->
 </resources>

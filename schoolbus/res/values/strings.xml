@@ -16,6 +16,8 @@
     <string name="time_start">起始时间</string>
     <string name="remark">备注</string>
     
+    <string name="settings">设置与帮助</string>
+    
      <string-array
          name="bus_start_array"
          >
@@ -58,3 +60,4 @@
      <string name="detail_end_place">终点站</string>
      <string name="detail_remark">备注</string>
 </resources>
+

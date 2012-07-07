@@ -1,6 +1,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="AppTheme" parent="android:style/Theme.Light.NoTitleBar" />
+    <style name="AppTheme" parent="android:style/Theme.Black.NoTitleBar" />
 	 <style name="Dialog.NoTitle" parent="@android:style/Theme.Dialog">
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowNoTitle">true</item>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <PreferenceCategory
+        android:title="个性设置"
+        >
+        <Preference
+            android:title="选择主题颜色"
+            android:key="color_theme"
+            android:summary="当前主题：蓝色主题"
+            />
+    </PreferenceCategory>
+    
+    
+    <PreferenceCategory
+        android:title="软件设置" 
+        >
+        <CheckBoxPreference
+            android:title="自动检查更新"
+            android:key="auto_update"
+            android:defaultValue="true" 
+            />
+        
+        <CheckBoxPreference
+            android:title="只在Wifi状态下检查更新"
+            android:defaultValue="false"
+            android:key="update_only_wifi" 
+            />
+        
+        <Preference
+            android:title="立即检查更新"
+            android:summary="当前软件版本 v1.0"
+            android:key="update_app"
+            />
+        <Preference
+            android:title="数据库更新"
+            android:summary="当前数据库版本 20120707"
+            android:key ="update_db" 
+            />
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:title="帮助主题"
+        >
+        <Preference
+            android:title="新手帮助"
+            android:summary="启动新手引导界面"
+            />
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:title="增强功能" 
+        >
+        
+        <Preference
+            android:title="分享"
+            android:key="share"
+            android:summary="把好东西分享给你的朋友吧！"
+            />
+        
+        <Preference
+            android:title="反馈给我们"
+            android:key="contact_us"
+            />
+        
+    </PreferenceCategory>
+    
+</PreferenceScreen>

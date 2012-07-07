@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import com.sdu.online.schoolbus.R.id;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 
@@ -22,7 +24,8 @@ public class SelectFromActivity extends Activity {
 		ViewPager pager = (ViewPager) findViewById(R.id.select_from_layout_viewpager);
 		final ImageView iv1 = (ImageView) findViewById(R.id.select_from_layout_iv1);
 		final ImageView iv2 = (ImageView) findViewById(R.id.select_from_layout_iv2);
-		
+		ImageView settingsView = (ImageView)findViewById(R.id.settings);
+
 		
 		ArrayList<View> mListViews = new ArrayList<View>();
 		mListViews.add(getLayoutInflater().inflate(R.layout.select_from_pager, null));
@@ -30,6 +33,14 @@ public class SelectFromActivity extends Activity {
 		
 		ViewPagerAdapter adapter = new ViewPagerAdapter(this,mListViews);
 		pager.setAdapter(adapter);
+		
+		settingsView.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(SelectFromActivity.this, SettingsActivity.class);
+				startActivity(intent);
+			}
+		});
 		
 		pager.setOnPageChangeListener(new OnPageChangeListener() {
 			public void onPageSelected(int arg0) {
