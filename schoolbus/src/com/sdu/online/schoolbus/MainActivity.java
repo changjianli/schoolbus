@@ -50,26 +50,26 @@ public class MainActivity extends Activity {
     private void setListeners(){
     	searchButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				search();
+//				search();
 			}
 		});
     }
     
-    private void search(){
-    	SchoolBusModel model = SchoolBusModel.getInstance();
-    	
-    	List<BusInfo> busInfo = model.getBus(this, 
-    	    	startSpinner.getSelectedItem().toString(),
-    	    	endSpinner.getSelectedItem().toString(), 
-    	    	1);
-    	CellAdapter adapter = new CellAdapter(this, busInfo);
-    	listView.setAdapter(adapter);
-    	if(showLayout.getVisibility() != View.VISIBLE){
-    		showLayout.setVisibility(View.VISIBLE);
-    	}
-    	
-    	Log.v(TAG, busInfo.toString());
-    }
+//    private void search(){
+//    	SchoolBusModel model = SchoolBusModel.getInstance();
+//    	
+//    	List<BusInfo> busInfo = model.getBus(this, 
+//    	    	startSpinner.getSelectedItem().toString(),
+//    	    	endSpinner.getSelectedItem().toString(), 
+//    	    	1);
+//    	CellAdapter adapter = new CellAdapter(this, busInfo);
+//    	listView.setAdapter(adapter);
+//    	if(showLayout.getVisibility() != View.VISIBLE){
+//    		showLayout.setVisibility(View.VISIBLE);
+//    	}
+//    	
+//    	Log.v(TAG, busInfo.toString());
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,12 +1,14 @@
 package com.sdu.online.schoolbus;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import com.sdu.online.schoolbus.model.BusInfo;
 import com.sdu.online.schoolbus.model.SchoolBusModel;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -67,6 +69,7 @@ public class SearchActivity extends Activity {
 		chooseDes = (TextView)findViewById(R.id.search_layout_choose_des);
 		isWeekDay = (TextView)findViewById(R.id.search_layout_weekday);
 		listView = (ListView)findViewById(R.id.search_layout_listview);
+		schedule  = (TextView)findViewById(R.id.search_layout_schedule);
 	}
 	
 	private void init(){
@@ -74,7 +77,22 @@ public class SearchActivity extends Activity {
 		rawStart = intent.getStringExtra("start");
 		String result[] = rawStart.split("\n");
 		start = result.length==1||result[1]==null||result[1].equals("") ? result[0] : result[0]+result[1];
+		//确定工作日非工作日
+		Date date = new Date();
+		int day = date.getDay();
+		if(day == Calendar.SUNDAY || day == Calendar.SATURDAY){
+			weekDay = SchoolBusModel.NO_WEEK_DAY;
+			isWeekDay.setText(getResources().getString(R.string.time_nowork));
+		}else{
+			weekDay = SchoolBusModel.WEEK_DAY;
+			isWeekDay.setText(getResources().getString(R.string.time_work));
+		}
 		
+		SchoolBusModel model = SchoolBusModel.getInstance();
+		scheduleType = model.getSchedule(this);
+		if(scheduleType == SchoolBusModel.SUMMER_TIME)
+			schedule.setText(getResources().getString(R.string.schedule_tip_summer));
+		else schedule.setText(getResources().getString(R.string.schedule_tip_winter));
 	}
 	
 	private void setListeners(){
@@ -86,7 +104,7 @@ public class SearchActivity extends Activity {
 	
 	private void search(){
 		SchoolBusModel model = SchoolBusModel.getInstance();
-    	List<BusInfo> busInfo = model.getBus(this,start,end,1);
+    	List<BusInfo> busInfo = model.getBus(this,start,end,weekDay,SchoolBusModel.SUMMER_TIME);
     	
     	BaseAdapter adapter = new BusCellAdapter(this,busInfo);
     	listView.setAdapter(adapter);
@@ -112,10 +130,14 @@ public class SearchActivity extends Activity {
 				if(checkInput())
 					search();
 			}else if(v == isWeekDay){
-				if(((TextView)v).getText().equals(getResources().getString(R.string.time_nowork)))
+				if(((TextView)v).getText().equals(getResources().getString(R.string.time_nowork))){
 					((TextView)v).setText(getResources().getString(R.string.time_work));
-				else
+					weekDay = SchoolBusModel.WEEK_DAY;
+				}
+				else{
 					((TextView)v).setText(getResources().getString(R.string.time_nowork));
+					weekDay = SchoolBusModel.NO_WEEK_DAY;	
+				}
 			}
 		}
 		

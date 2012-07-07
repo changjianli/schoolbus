@@ -56,6 +56,7 @@ public class BusCellAdapter extends BaseAdapter {
 			holder.detailBetweenPlace= (TextView)convertView.findViewById(R.id.detail_layout_between_place);
 			holder.detailEndPlace= (TextView)convertView.findViewById(R.id.detail_layout_to_place);
 			holder.detailRemark = (TextView)convertView.findViewById(R.id.detail_layout_remark);
+			holder.title = (LinearLayout)convertView.findViewById(R.id.bus_list_cell_entry);
 			
 //		}else 
 //			holder = (ViewHolder)convertView.getTag();
@@ -79,13 +80,13 @@ public class BusCellAdapter extends BaseAdapter {
 		holder.detailBetweenPlace.setText(builder);
 		
 		final BusInfo bus = busInfo.get(position);
-		holder.tv3.setOnClickListener(new OnClickListener() {
+		holder.title.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Log.d(TAG, bus.toString());
-				if(clickedHolder != null){
+				if(clickedHolder != null && clickedHolder != holder){
 					clickedHolder.layout.setVisibility(View.GONE);
 				}
-				if(holder.layout.getVisibility()!=View.VISIBLE)	holder.layout.setVisibility(View.VISIBLE);
+				if(holder.layout.getVisibility() != View.VISIBLE)	holder.layout.setVisibility(View.VISIBLE);
 				else holder.layout.setVisibility(View.GONE);
 				clickedHolder = holder;
 			}
@@ -103,6 +104,7 @@ public class BusCellAdapter extends BaseAdapter {
 		public TextView detailEndPlace;
 		public TextView detailRemark;
 		public LinearLayout layout;
+		public LinearLayout title;
 	}
 
 }

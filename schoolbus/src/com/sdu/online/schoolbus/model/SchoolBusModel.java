@@ -1,6 +1,7 @@
 package com.sdu.online.schoolbus.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import android.content.Context;
@@ -11,8 +12,11 @@ import android.util.Log;
 import com.sdu.online.schoolbus.sql.DataBaseHelper;
 
 public class SchoolBusModel {
-	private static final int SUMMER_TIME=1;
-	private static final int WINTER_TIME=2;
+	public static final int SUMMER_TIME=1;
+	public static final int WINTER_TIME=2;
+	public static final int WEEK_DAY = 1;
+	public static final int NO_WEEK_DAY = 2;
+	
 	private String Time=null;
 	
 	private static final String TAG=SchoolBusModel.class.getSimpleName();
@@ -25,18 +29,22 @@ public class SchoolBusModel {
 		return SchoolBusModelHolder.model;
 	}
 	
-	public List<BusInfo> getBus(Context context,String from,String to,int timeflag){
+	public List<BusInfo> getBus(Context context,String from,String to,int busType,int schedule){
 		List<BusInfo> buslist=new ArrayList<BusInfo>();
 		DataBaseHelper dbhelper=new DataBaseHelper(context);
 		SQLiteDatabase sqlDB =dbhelper.getReadableDatabase();
 		Log.d(TAG, from+" "+to);
-		if(timeflag==SUMMER_TIME){
-			Time="summer";
-		}
-		else if(timeflag==WINTER_TIME){
-			Time="winter";
-		}
-		Cursor cursor=sqlDB.rawQuery("select * from winter_time where bus_from=? and bus_to=?",new String[]{from,to});
+//		if(timeflag==SUMMER_TIME){
+//			Time="summer";
+//		}
+//		else if(timeflag==WINTER_TIME){
+//			Time="winter";
+//		}
+		String sql;
+		if(schedule == SUMMER_TIME){
+			sql = "select * from summer_time where bus_from=? and bus_to=? and bus_type in(0,?)";
+		}else sql = "select * from winter_time where bus_from=? and bus_to=? and bus_type in(0,?)";
+		Cursor cursor=sqlDB.rawQuery(sql,new String[]{from,to,busType+""});
 		
 		while(cursor.moveToNext()){
 			BusInfo businfo=new BusInfo();
@@ -52,4 +60,20 @@ public class SchoolBusModel {
 		return buslist;
 	}
 	
+	public int getSchedule(Context context){
+		DataBaseHelper dbhelper=new DataBaseHelper(context);
+		SQLiteDatabase sqlDB =dbhelper.getReadableDatabase();
+		Date date = new Date();
+		String sql = "select id from summer_winter where start_month <= ? and start_day <= ? and end_day >= ? and end_month >= ?";
+		String day = date.getDay()+"";
+		String month = date.getMonth()+"";
+		Cursor cursor = sqlDB.rawQuery(sql, new String[]{month,day,day,month});
+		int schedule = -1;
+		if(cursor.moveToFirst()){
+			schedule = cursor.getInt(cursor.getColumnIndex("id"));
+		}
+		cursor.deactivate();
+		sqlDB.close();
+		return schedule;
+	}
 }
