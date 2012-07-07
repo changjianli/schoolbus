@@ -106,7 +106,7 @@ public class SearchActivity extends Activity {
 		SchoolBusModel model = SchoolBusModel.getInstance();
     	List<BusInfo> busInfo = model.getBus(this,start,end,weekDay,SchoolBusModel.SUMMER_TIME);
     	
-    	BaseAdapter adapter = new BusCellAdapter(this,busInfo);
+    	BaseAdapter adapter = new BusCellAdapter(this,busInfo,listView);
     	listView.setAdapter(adapter);
     	Log.v(TAG, busInfo.toString());
 	}

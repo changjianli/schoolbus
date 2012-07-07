@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 
@@ -23,11 +24,13 @@ public class BusCellAdapter extends BaseAdapter {
 	private LayoutInflater mInflater;
 	private static final String TAG = BusCellAdapter.class.getSimpleName();
 	private ViewHolder clickedHolder;
+	private ListView listView;
 	
-	public BusCellAdapter(Context context,List<BusInfo> busInfo){
+	public BusCellAdapter(Context context,List<BusInfo> busInfo,ListView listView){
 		this.context = context;
 		this.busInfo = busInfo;
 		mInflater = LayoutInflater.from(context);
+		this.listView = listView;
 	}
 	
 	public int getCount() {
@@ -79,9 +82,11 @@ public class BusCellAdapter extends BaseAdapter {
 			}
 		holder.detailBetweenPlace.setText(builder);
 		
+		final int p = position;
 		final BusInfo bus = busInfo.get(position);
 		holder.title.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
+				listView.setSelection(p);
 				Log.d(TAG, bus.toString());
 				if(clickedHolder != null && clickedHolder != holder){
 					clickedHolder.layout.setVisibility(View.GONE);
