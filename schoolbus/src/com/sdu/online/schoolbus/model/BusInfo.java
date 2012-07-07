@@ -14,12 +14,9 @@ public class BusInfo {
 	private Place to;
 	private int busType;
 	private String remark;
-	private ArrayList<String> busBetween;
-	private ArrayList<String> betweenDesc;
-	public ArrayList<String> getBetweenDesc() {
-		return betweenDesc;
-	}
-	public ArrayList<String> getBusBetween() {
+	private ArrayList<Place> busBetween;
+
+	public ArrayList<Place> getBusBetween() {
 		return busBetween;
 	}
 	public int getBusType() {
@@ -37,12 +34,8 @@ public class BusInfo {
 	public String getStartTime() {
 		return startTime;
 	}
-	public void setBetweenDesc(ArrayList<String> betweenDesc) {
-		this.betweenDesc = betweenDesc;
-	}
-	public void setBusBetween(ArrayList<String> busBetween) {
-		this.busBetween = busBetween;
-	}
+	
+	
 	public void setBusType(int busType) {
 		this.busType = busType;
 	}
@@ -83,7 +76,7 @@ public class BusInfo {
 		return "BusInfo [id=" + id + ", from=" + from + ", startTime="
 				+ startTime + ", endTime=" + endTime + ", to=" + to
 				+ ", busType=" + busType + ", remark=" + remark
-				+ ", busBetween=" + busBetween + ", betweenDesc=" + betweenDesc
+				+ ", busBetween=" + busBetween 
 				+ "]";
 	}
 	

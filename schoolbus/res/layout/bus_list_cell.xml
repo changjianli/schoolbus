@@ -3,6 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_color_blue"
+    android:orientation="vertical"
+     >
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_color_blue"
      >
 	
     <TextView
@@ -41,4 +48,13 @@
         android:textSize="@dimen/detail_text_size"
         android:padding="@dimen/list_view_padding"
         />
+</LinearLayout>
+<LinearLayout
+    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:id="@+id/detail_layout"
+    android:visibility="gone"
+    >
+<include layout="@layout/detail_layout"/>
+</LinearLayout>
 </LinearLayout>

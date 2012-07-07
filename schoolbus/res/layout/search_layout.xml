@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     android:orientation="vertical" >
     
     <LinearLayout
@@ -73,19 +74,12 @@
         >
         <ListView
             android:id="@+id/search_layout_listview"
+        	android:background="@drawable/bg"
             style="@style/ListView.style.Main"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
             android:scrollbars="vertical" 
             />
-         <ScrollView
-       		 android:visibility="gone"
-             android:layout_width="fill_parent"
-             android:layout_height="fill_parent"
-             android:id="@+id/search_layout_scrollview" 
-             >
-             <include layout="@layout/detail_layout"/>
-         </ScrollView>
     </RelativeLayout>
 
 </LinearLayout>

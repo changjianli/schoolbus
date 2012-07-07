@@ -14,6 +14,7 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int main_color_alpha=0x7f040002;
         public static final int main_color_blue=0x7f040000;
         public static final int main_color_light=0x7f040001;
     }
@@ -41,42 +42,43 @@ public final class R {
         public static final int text_length=0x7f050005;
     }
     public static final class drawable {
-        public static final int ic_action_search=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int more=0x7f020002;
-        public static final int point_normal=0x7f020003;
-        public static final int point_selected=0x7f020004;
-        public static final int switcher_text=0x7f020005;
+        public static final int bg=0x7f020000;
+        public static final int ic_action_search=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int more=0x7f020003;
+        public static final int point_normal=0x7f020004;
+        public static final int point_selected=0x7f020005;
+        public static final int switcher_text=0x7f020006;
     }
     public static final class id {
-        public static final int bus_search_button=0x7f0a0016;
+        public static final int bus_search_button=0x7f0a0017;
         public static final int bus_searchbutton=0x7f0a0008;
         public static final int bus_time_nowork=0x7f0a0007;
         public static final int bus_time_work=0x7f0a0006;
-        public static final int detail_layout_between_place=0x7f0a000e;
-        public static final int detail_layout_from_place=0x7f0a000d;
-        public static final int detail_layout_from_time=0x7f0a000c;
-        public static final int detail_layout_remark=0x7f0a0010;
-        public static final int detail_layout_to_place=0x7f0a000f;
+        public static final int detail_layout=0x7f0a000c;
+        public static final int detail_layout_between_place=0x7f0a000f;
+        public static final int detail_layout_from_place=0x7f0a000e;
+        public static final int detail_layout_from_time=0x7f0a000d;
+        public static final int detail_layout_remark=0x7f0a0011;
+        public static final int detail_layout_to_place=0x7f0a0010;
         public static final int end_spinner=0x7f0a0004;
-        public static final int list_cell_more=0x7f0a0011;
-        public static final int main_layout_linearlayout_result=0x7f0a0017;
-        public static final int main_layout_listview=0x7f0a0018;
-        public static final int main_layout_spinner_end=0x7f0a0014;
-        public static final int main_layout_spinner_start=0x7f0a0013;
-        public static final int main_layout_textview_end=0x7f0a0015;
-        public static final int main_layout_textview_start=0x7f0a0012;
+        public static final int list_cell_more=0x7f0a0012;
+        public static final int main_layout_linearlayout_result=0x7f0a0018;
+        public static final int main_layout_listview=0x7f0a0019;
+        public static final int main_layout_spinner_end=0x7f0a0015;
+        public static final int main_layout_spinner_start=0x7f0a0014;
+        public static final int main_layout_textview_end=0x7f0a0016;
+        public static final int main_layout_textview_start=0x7f0a0013;
         public static final int menu_settings=0x7f0a002b;
         public static final int remark_text=0x7f0a000b;
         public static final int sdu_bus_img=0x7f0a0001;
         public static final int sdu_logo=0x7f0a0000;
-        public static final int search_layout_choose_des=0x7f0a001c;
-        public static final int search_layout_listview=0x7f0a001e;
-        public static final int search_layout_scrollview=0x7f0a001f;
-        public static final int search_layout_search_image=0x7f0a001d;
-        public static final int search_layout_top=0x7f0a0019;
-        public static final int search_layout_top_left=0x7f0a001a;
-        public static final int search_layout_weekday=0x7f0a001b;
+        public static final int search_layout_choose_des=0x7f0a001d;
+        public static final int search_layout_listview=0x7f0a001f;
+        public static final int search_layout_search_image=0x7f0a001e;
+        public static final int search_layout_top=0x7f0a001a;
+        public static final int search_layout_top_left=0x7f0a001b;
+        public static final int search_layout_weekday=0x7f0a001c;
         public static final int select_from_layout_bottom=0x7f0a0021;
         public static final int select_from_layout_iv1=0x7f0a0022;
         public static final int select_from_layout_iv2=0x7f0a0023;

@@ -28,9 +28,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
 		try {
-			File file=new File(DATABASE_FILE_NAME);
-			file.createNewFile();
-			FileUtils.copyfile(context.getAssets().open(DATABASE_FILE_NAME),file, false);
+			File file=context.getDatabasePath(DATABASE_FILE_NAME);
+			FileUtils.copyfile(context.getAssets().open(DATABASE_FILE_NAME),file, true);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -16,6 +16,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SearchActivity extends Activity {
 
@@ -92,6 +93,14 @@ public class SearchActivity extends Activity {
     	Log.v(TAG, busInfo.toString());
 	}
 	
+	private boolean checkInput(){
+		if(chooseDes.getText().equals(getResources().getString(R.string.choose_des_tip))){
+			Toast.makeText(this, "请先选择目的地", Toast.LENGTH_SHORT).show();
+			return false;
+		}
+		return true;
+	}
+	
 	private  class Listener implements OnClickListener{
 		public void onClick(View v) {
 			if(v == chooseDes){
@@ -100,7 +109,8 @@ public class SearchActivity extends Activity {
 				intent.putExtra("start", rawStart);
 				startActivityForResult(intent, 1);
 			}else if(v == search){
-				search();
+				if(checkInput())
+					search();
 			}else if(v == isWeekDay){
 				if(((TextView)v).getText().equals(getResources().getString(R.string.time_nowork)))
 					((TextView)v).setText(getResources().getString(R.string.time_work));

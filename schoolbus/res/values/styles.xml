@@ -6,22 +6,22 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsTranslucent">false</item><!--半透明-->
-        <item name="android:windowBackground">@color/main_color_light</item>
+        <item name="android:windowBackground">@color/main_color_alpha</item>
     </style>
     
     <style name="ListView.style.Main" parent="@android:style/Widget.ListView">
         <!-- 设置透明背景色 -->
 	  <item name="android:cacheColorHint">#00000000</item>
 	  <!-- 指定分割线颜色 -->
-	  <item name="android:divider">@color/main_color_light</item>
+	  <item name="android:divider">#00000000</item>
 	  <!-- 指定分割线高度 -->
 	  <item name="android:dividerHeight">20dp</item>
 	  <!-- 设置listSelector的颜色在数据的下面 -->
 	  <item name="android:drawSelectorOnTop">false</item>
 	  <!-- 设置点击选中颜色 -->
-	  <!-- <item name="android:listSelector">@color/main_color_blue</item> -->
+	   <item name="android:listSelector">#00000000</item>
 	  <!-- 设置ListView默认背景色 -->
-	  <item name="android:background">@color/main_color_light</item>
+	  <item name="android:background">#00000000</item>
 	  <!-- 设置ListView距左边距距离 -->
 	
 	  

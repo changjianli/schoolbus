@@ -44,7 +44,7 @@ public class SchoolBusModel {
 			businfo.setEndTime(cursor.getString(cursor.getColumnIndex("end_time")));
 			businfo.setBusType(cursor.getInt(cursor.getColumnIndex("bus_type")));
 			businfo.setFrom( new Place(from,cursor.getString(cursor.getColumnIndex("from_desc"))));
-			businfo.setTo( new Place(from,cursor.getString(cursor.getColumnIndex("to_desc"))));
+			businfo.setTo( new Place(to,cursor.getString(cursor.getColumnIndex("to_desc"))));
 			buslist.add(businfo);
 		}
 		cursor.deactivate();
