@@ -6,7 +6,13 @@ import com.sdu.online.schoolbus.R.id;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -64,6 +70,25 @@ public class SelectFromActivity extends Activity {
 				
 			}
 		});
+		
+		Intent intent = new Intent();
+		intent.setClass(this, UpdateService.class);
+		startService(intent);
+		
+		
+		//一些初始化配置
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+		PackageInfo info = null;
+		Editor editor= sp.edit();
+		try {
+			 info = getPackageManager().getPackageInfo(this.getPackageName(), 0);
+		} catch (NameNotFoundException e) {e.printStackTrace();}
+		if(sp.getString("app_version",null) == null){
+			editor.putString("app_version", info.versionName);
+		}if(sp.getString("db_version", null) == null){
+			editor.putString("db_version", "20120707");
+		}
+		editor.commit();
 		
 	}
 	

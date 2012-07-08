@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 
 import android.os.Environment;
 import android.util.Log;
@@ -23,7 +24,7 @@ public class FileUtils {
 	}
 	
 	/**
-	 * 创建文件夹方�?
+	 * 创建文件夹方�?
 	 * @param dir 文件夹的名字
 	 * @return File
 	 */
@@ -58,5 +59,7 @@ public class FileUtils {
 			Log.e("readfile", ex.getMessage());
 		}
 	}
+	
+	
 	
 }

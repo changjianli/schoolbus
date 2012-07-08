@@ -17,6 +17,7 @@
     <string name="remark">备注</string>
     
     <string name="settings">设置与帮助</string>
+    <string name="waiting_update">正在检查更新\n请稍后</string>
     
      <string-array
          name="bus_start_array"
@@ -59,5 +60,8 @@
      <string name="detail_between_place">途经地点</string>
      <string name="detail_end_place">终点站</string>
      <string name="detail_remark">备注</string>
+     
+     <string name="config_app_update_url">http://users10.jabry.com/sheling2011/testapk/update_app.xml</string>
+     <string name="config_db_update_url">http://users10.jabry.com/sheling2011/testapk/update_db.xml</string>
 </resources>
 

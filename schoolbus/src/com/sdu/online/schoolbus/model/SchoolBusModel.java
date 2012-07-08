@@ -7,6 +7,7 @@ import java.util.List;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.text.format.DateFormat;
 import android.util.Log;
 
 import com.sdu.online.schoolbus.sql.DataBaseHelper;
@@ -64,10 +65,9 @@ public class SchoolBusModel {
 		DataBaseHelper dbhelper=new DataBaseHelper(context);
 		SQLiteDatabase sqlDB =dbhelper.getReadableDatabase();
 		Date date = new Date();
-		String sql = "select id from summer_winter where start_month <= ? and start_day <= ? and end_day >= ? and end_month >= ?";
-		String day = date.getDay()+"";
-		String month = date.getMonth()+"";
-		Cursor cursor = sqlDB.rawQuery(sql, new String[]{month,day,day,month});
+		String sql = "select id from summer_winter where start_<= ? and end_ >= ?";
+		String dateTime=DateFormat.format("MMDD", date).toString();
+		Cursor cursor = sqlDB.rawQuery(sql, new String[]{dateTime,dateTime});
 		int schedule = -1;
 		if(cursor.moveToFirst()){
 			schedule = cursor.getInt(cursor.getColumnIndex("id"));
