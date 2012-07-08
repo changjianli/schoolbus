@@ -41,6 +41,7 @@ public class ChooseDesActivity extends Activity {
 	private void addViews(){
 		LinearLayout linearLayout = new LinearLayout(this);
 		linearLayout.setOrientation(LinearLayout.VERTICAL);
+		linearLayout.setBackgroundColor(Color.WHITE);
 		LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 		params.setMargins((int)margin, (int)margin,(int)margin,(int)margin);
 		int count = 0;
@@ -55,7 +56,7 @@ public class ChooseDesActivity extends Activity {
 				linearLayout.addView(childLayout, childParams);
 			}
 			TextView tv = new TextView(this);
-			android.view.ViewGroup.LayoutParams par = new android.view.ViewGroup.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+			//android.view.ViewGroup.LayoutParams par = new android.view.ViewGroup.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 			tv.setText(placeArr[i]);
 			tv.setBackgroundResource(R.color.main_color_blue);
 			tv.setTextColor(Color.WHITE);
@@ -80,8 +81,10 @@ public class ChooseDesActivity extends Activity {
 	private class Listener implements OnClickListener{
 		public void onClick(View v) {
 			Intent intent = new Intent();
-			intent.putExtra("end", ((TextView)v).getText().toString());
-			setResult(RESULT_OK, intent);
+			intent.putExtra("start", start.replaceAll("\n", ""));
+			intent.putExtra("end", ((TextView)v).getText().toString().replaceAll("\n", ""));
+			intent.setClass(ChooseDesActivity.this, SearchActivity.class);
+			startActivity(intent);
 			finish();
 		}
 	}

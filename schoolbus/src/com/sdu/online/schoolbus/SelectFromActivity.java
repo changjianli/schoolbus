@@ -2,16 +2,13 @@ package com.sdu.online.schoolbus;
 
 import java.util.ArrayList;
 
-import com.sdu.online.schoolbus.R.id;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TableLayout;
 
 public class SelectFromActivity extends Activity {
 

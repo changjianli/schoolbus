@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="main_color_blue">#5692CD</color>
+    <color name="main_color_blue">#a011C2FF</color>
     <color name="main_color_light">#ffffff</color>
     <color name="main_color_alpha">#ff000000</color>
     <!-- 99D9EA   #5692CD -->

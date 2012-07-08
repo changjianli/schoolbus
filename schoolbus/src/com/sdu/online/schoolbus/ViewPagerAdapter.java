@@ -4,7 +4,6 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.LayoutParams;
@@ -12,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class ViewPagerAdapter extends PagerAdapter {
@@ -47,9 +45,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 	@Override
 	public Object instantiateItem(View container, int position) {
 		ViewHolder holder;
-		View v;
-//		if(container == null){
-//			v = mInflater.inflate(R.layout.select_from_pager, null);
+
 			holder = new ViewHolder();
 			holder.tv1 = (TextView) views.get(position).findViewById(R.id.select_from_tv1);
 			holder.tv2 = (TextView) views.get(position).findViewById(R.id.select_from_tv2);
@@ -63,8 +59,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 			setListener(holder.tv4);
 			setListener(holder.tv5);
 			setListener(holder.tv6);
-//		}else
-//			holder = (ViewHolder) container.getTag();
+
 		switch(position){
 		case 0:
 			holder.tv1.setText(R.string.start_palce_xing);
@@ -96,7 +91,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 		view.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(context, SearchActivity.class);
+				intent.setClass(context, ChooseDesActivity.class);
 				intent.putExtra("start", ((TextView)view).getText().toString());
 				context.startActivity(intent);
 			}

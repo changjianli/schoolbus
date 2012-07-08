@@ -17,13 +17,11 @@ import android.widget.TextView;
 
 public class CellAdapter extends BaseAdapter {
 
-	private Context context;
 	private List<BusInfo> busInfo;
 	private LayoutInflater mInflater;
 	private static final String TAG = CellAdapter.class.getSimpleName();
 	
 	public CellAdapter(Context context,List<BusInfo> busInfo){
-		this.context = context;
 		this.busInfo = busInfo;
 		mInflater = LayoutInflater.from(context);
 	}

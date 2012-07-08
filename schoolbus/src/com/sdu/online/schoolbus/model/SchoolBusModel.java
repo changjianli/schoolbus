@@ -25,18 +25,18 @@ public class SchoolBusModel {
 		return SchoolBusModelHolder.model;
 	}
 	
-	public List<BusInfo> getBus(Context context,String from,String to,int timeflag){
+	public List<BusInfo> getBus(Context context,String from,String to,int timeflag,int workflag){
 		List<BusInfo> buslist=new ArrayList<BusInfo>();
 		DataBaseHelper dbhelper=new DataBaseHelper(context);
 		SQLiteDatabase sqlDB =dbhelper.getReadableDatabase();
 		Log.d(TAG, from+" "+to);
 		if(timeflag==SUMMER_TIME){
-			Time="summer";
+			Time="summer_time";
 		}
 		else if(timeflag==WINTER_TIME){
-			Time="winter";
+			Time="winter_time";
 		}
-		Cursor cursor=sqlDB.rawQuery("select * from winter_time where bus_from=? and bus_to=?",new String[]{from,to});
+		Cursor cursor=sqlDB.rawQuery("select * from "+Time+" where bus_from=? and bus_to=? and bus_type in (0,?)",new String[]{from,to,workflag+""});
 		
 		while(cursor.moveToNext()){
 			BusInfo businfo=new BusInfo();
