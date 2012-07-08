@@ -20,8 +20,8 @@ import android.util.Log;
 public class UpdateManager {
 
 	public static final String TAG = UpdateManager.class.getSimpleName(); 
-	private String appUrlStr = "http://users10.jabry.com/sheling2011/testapk/update_app.xml",
-			dbUrlStr = "http://users10.jabry.com/sheling2011/testapk/update_db.xml";
+	private String appUrlStr = "http://sheling.co.de/update_app.xml",
+			dbUrlStr = "http://sheling.co.de/update_db_upgrade.xml";
 	private static String dbFileName = "db.xml",appFileName = "app.xml";
 	private Context context;
 	/**方法为阻塞的。应用线程调用*/
@@ -103,24 +103,27 @@ public class UpdateManager {
 	}
 	
 	public class DBUpdateInfo{
-		String version;
-		String md5;
-		long size;
-		String url;
+		public String version;
+		public String md5;
+		public long size;
+		public String url;
+		public String time;
 		@Override
 		public String toString() {
-			return "DBUpdateInfo [version=" + version + ", md5=" + md5
-					+ ", size=" + size + ", url=" + url + "]";
+			return "版本号: "+version+"\n大小: "+size+"\n更新时间: "+time+"\n";
 		}
 		
 	}
 	
 	public class APPUpdateInfo{
-		String version;
-		String md5;
-		long size;
-		String url;
-		String time;
-		String note;
+		public String version;
+		public String md5;
+		public long size;
+		public String url;
+		public String time;
+		public String note;
+		public String toString() {
+			return "版本号: "+version+"\n大小: "+size+"\n更新时间: "+time+"\n新特性: "+note+"\n";
+		}
 	}
 }

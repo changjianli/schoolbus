@@ -78,7 +78,7 @@ public final class R {
         public static final int main_layout_spinner_start=0x7f0b0015;
         public static final int main_layout_textview_end=0x7f0b0017;
         public static final int main_layout_textview_start=0x7f0b0014;
-        public static final int menu_settings=0x7f0b0030;
+        public static final int menu_settings=0x7f0b0033;
         public static final int remark_text=0x7f0b000c;
         public static final int sdu_bus_img=0x7f0b0001;
         public static final int sdu_logo=0x7f0b0000;
@@ -108,6 +108,9 @@ public final class R {
         public static final int time_text=0x7f0b000b;
         public static final int waiting_progressBar=0x7f0b002e;
         public static final int waiting_text=0x7f0b002f;
+        public static final int warn_button_cancle=0x7f0b0031;
+        public static final int warn_button_download=0x7f0b0032;
+        public static final int warn_textView=0x7f0b0030;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -119,13 +122,17 @@ public final class R {
         public static final int search_layout=0x7f030006;
         public static final int select_from_layout=0x7f030007;
         public static final int select_from_pager=0x7f030008;
-        public static final int waiting=0x7f030009;
+        public static final int update=0x7f030009;
+        public static final int waiting=0x7f03000a;
+        public static final int warn=0x7f03000b;
     }
     public static final class menu {
         public static final int activity_main=0x7f0a0000;
     }
     public static final class string {
         public static final int app_name=0x7f070000;
+        public static final int btn_cancle=0x7f070027;
+        public static final int btn_download=0x7f070028;
         public static final int bus_end=0x7f070005;
         public static final int bus_start=0x7f070004;
         public static final int bus_time=0x7f070006;
@@ -163,6 +170,7 @@ public final class R {
         public static final int time_start=0x7f07000d;
         public static final int time_work=0x7f070008;
         public static final int title_activity_main=0x7f070003;
+        public static final int update_warn=0x7f070029;
         public static final int waiting_update=0x7f070010;
     }
     public static final class style {

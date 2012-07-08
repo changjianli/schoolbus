@@ -47,9 +47,15 @@
             android:name=".DownloadActivity"
             android:theme="@style/Dialog.NoTitle"
             />
+        <activity
+            android:name=".WarnDialog"
+            android:theme="@android:style/Theme.Dialog"
+            android:label="@string/update_warn"
+            />
 		<service
 		    android:name=".UpdateService" 
 		    >
+		 
 		    
 		</service>        
     </application>

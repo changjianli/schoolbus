@@ -63,5 +63,9 @@
      
      <string name="config_app_update_url">http://users10.jabry.com/sheling2011/testapk/update_app.xml</string>
      <string name="config_db_update_url">http://users10.jabry.com/sheling2011/testapk/update_db.xml</string>
+     
+     <string name="btn_cancle">以后再说</string>
+     <string name="btn_download">去下载>></string>
+     <string name="update_warn">更新提示</string>
 </resources>
 

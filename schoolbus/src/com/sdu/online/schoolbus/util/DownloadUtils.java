@@ -12,7 +12,11 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import android.util.Log;
+
 public class DownloadUtils {
+	public static final String TAG = DownloadUtils.class.getSimpleName();
+	
 	public static void download(String fromUrlStr,FileOutputStream ops) throws SocketTimeoutException{
 		URL url;
 		try {
@@ -29,6 +33,7 @@ public class DownloadUtils {
 		      int leave = (int) (size - readNum * onceSize);
 		      int length = 0;
 		      int readed = 0;
+		      Log.d(TAG, leave+" "+size);
 		      for(int i=readNum;i>0;i--){
 		    	  length=in.read(buffer);
 		    	  ops.write(buffer);
@@ -48,7 +53,9 @@ public class DownloadUtils {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} 
+		}catch(NegativeArraySizeException e){
+			e.printStackTrace();
+		}
 	}
 	public static void download(String fromUrlStr,String outFileStr) throws SocketTimeoutException, FileNotFoundException{
 		File f = new File(outFileStr);

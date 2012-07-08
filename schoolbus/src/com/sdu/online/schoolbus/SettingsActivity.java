@@ -1,6 +1,7 @@
 package com.sdu.online.schoolbus;
 
 import com.sdu.online.schoolbus.model.UpdateManager;
+import com.sdu.online.schoolbus.model.UpdateManager.DBUpdateInfo;
 import com.sdu.online.schoolbus.util.DialogUtils;
 
 import android.app.AlertDialog;
@@ -35,7 +36,13 @@ public class SettingsActivity extends PreferenceActivity {
 				break;
 			case 1:
 				dialog.dismiss();
-				
+				Intent intent = new Intent();
+				intent.setClass(SettingsActivity.this, WarnDialog.class);
+				DBUpdateInfo db = (DBUpdateInfo) msg.obj;
+				intent.putExtra("text", db.toString());
+				intent.putExtra("type", 1);
+				intent.putExtra("url", db.url);
+				startActivity(intent);
 				break;
 			}
 			super.handleMessage(msg);
