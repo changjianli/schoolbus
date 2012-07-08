@@ -24,29 +24,38 @@ public class DownloadUtils {
 		   URLConnection urlConnection = (HttpURLConnection) url.openConnection();
 		   urlConnection.setReadTimeout(1000);
 		   InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-		   int size =urlConnection.getContentLength();
+//		   int size =urlConnection.getContentLength();
 		   int onceSize = 1024 * 4;
 		      byte[] buffer = new byte[onceSize];
-		      //计算固定大小的缓冲区要读多少次
-		      int readNum = (int) Math.floor(size/onceSize);
-		      //得到剩余的字节长度
-		      int leave = (int) (size - readNum * onceSize);
 		      int length = 0;
-		      int readed = 0;
-		      Log.d(TAG, leave+" "+size);
-		      for(int i=readNum;i>0;i--){
-		    	  length=in.read(buffer);
-		    	  ops.write(buffer);
+		      while((length=in.read(buffer)) != -1){
+		    	  ops.write(buffer,0,length);
 		    	  ops.flush();
-		    	  readed += length;
 		      }
-		      buffer = new byte[leave];
-		      length=in.read(buffer);
-		      ops.write(buffer);
-	    	  ops.flush();
-	    	  readed += length;
 		      ops.close();
 		      in.close();
+		      
+		      //计算固定大小的缓冲区要读多少次
+//		      int readNum = (int) Math.floor(size/onceSize);
+		      //得到剩余的字节长度
+//		      int leave = (int) (size - readNum * onceSize);
+//		      int length = 0;
+//		      int readed = 0;
+//		      Log.d(TAG, leave+" "+size);
+//		      for(int i=readNum;i>0;i--){
+//		    	  length=in.read(buffer);
+//		    	  ops.write(buffer);
+//		    	  ops.flush();
+//		    	  readed += length;
+//		      }
+//		      buffer = new byte[leave];
+//		      length=in.read(buffer);
+//		      ops.write(buffer);
+//	    	  ops.flush();
+//	    	  readed += length;
+//		      ops.close();
+//		      in.close();
+		   
 		}catch(FileNotFoundException e){
 			System.out.println("No resources");
 		}catch (MalformedURLException e) {

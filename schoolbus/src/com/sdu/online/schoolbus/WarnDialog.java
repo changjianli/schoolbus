@@ -3,6 +3,7 @@ package com.sdu.online.schoolbus;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -14,6 +15,7 @@ public class WarnDialog extends Activity {
 	String url;
 	//1为db,2为apk
 	int type;
+	private static final String TAG = WarnDialog.class.getSimpleName();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,7 +35,9 @@ public class WarnDialog extends Activity {
 		String text = intent.getStringExtra("text");
 		url = intent.getStringExtra("url");
 		type = intent.getIntExtra("type", 0);
+		text = text.replaceAll("<br/>", "\n");
 		tv.setText(text);
+		Log.v(TAG, text);
 	}
 	
 	class Listener implements OnClickListener{

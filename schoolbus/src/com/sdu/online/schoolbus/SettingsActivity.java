@@ -1,6 +1,7 @@
 package com.sdu.online.schoolbus;
 
 import com.sdu.online.schoolbus.model.UpdateManager;
+import com.sdu.online.schoolbus.model.UpdateManager.APPUpdateInfo;
 import com.sdu.online.schoolbus.model.UpdateManager.DBUpdateInfo;
 import com.sdu.online.schoolbus.util.DialogUtils;
 
@@ -44,6 +45,19 @@ public class SettingsActivity extends PreferenceActivity {
 				intent.putExtra("url", db.url);
 				startActivity(intent);
 				break;
+			case 2:
+				dialog.dismiss();
+				Intent it = new Intent();
+				it.setClass(SettingsActivity.this, WarnDialog.class);
+				APPUpdateInfo app = (APPUpdateInfo) msg.obj;
+				it.putExtra("text", app.toString());
+				it.putExtra("type", 2);
+				it.putExtra("url", app.url);
+				startActivity(it);
+				break;
+			case -2:
+				dialog.dismiss();
+				DialogUtils.showNoUpdateDialog(SettingsActivity.this, "当前软件已为最新！");
 			}
 			super.handleMessage(msg);
 		}
@@ -109,7 +123,25 @@ public class SettingsActivity extends PreferenceActivity {
 			t.start();
 			
 		}else if(preference.getKey().equals("update_app")){
-			
+			dialog = DialogUtils.showProcessDialog(this);
+			Thread t = new Thread(){
+				public void run(){
+					UpdateManager um = new UpdateManager();
+					UpdateManager.APPUpdateInfo app = um.needUpdateApp(SettingsActivity.this);
+					Log.d(TAG, "get app");
+					if(app!= null){
+						Message message = Message.obtain();
+						message.what = 2;
+						message.obj = app;
+						handler.handleMessage(message);
+					}else{
+						Message message = Message.obtain();
+						message.what = -2;
+						handler.handleMessage(message);
+					}
+				}
+			};
+			t.start();
 		}
 		listen();
 		return super.onPreferenceTreeClick(preferenceScreen, preference);
