@@ -78,7 +78,7 @@
         >
         <ListView
             android:id="@+id/search_layout_listview"
-        	android:background="@drawable/bg"
+        	android:background="@color/main_color_alpha"
             style="@style/ListView.style.Main"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
