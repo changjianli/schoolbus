@@ -14,9 +14,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +33,8 @@ public class SearchActivity extends Activity {
 	private ImageView search;
 	private String start,end,rawStart;
 	private ListView listView;
+	private LinearLayout wrapper,topLayout;
+	private RelativeLayout listLayout;
 	private static final String TAG = SearchActivity.class.getSimpleName();
 	
 	private int weekDay,scheduleType;
@@ -57,8 +65,6 @@ public class SearchActivity extends Activity {
 		}
 	}
 
-
-
 	private void findViews(){
 		startPlace = (TextView) findViewById(R.id.detail_layout_from_time);
 		startTime = (TextView)findViewById(R.id.detail_layout_from_time);
@@ -70,6 +76,9 @@ public class SearchActivity extends Activity {
 		isWeekDay = (TextView)findViewById(R.id.search_layout_weekday);
 		listView = (ListView)findViewById(R.id.search_layout_listview);
 		schedule  = (TextView)findViewById(R.id.search_layout_schedule);
+		wrapper = (LinearLayout)findViewById(R.id.search_layout_wrapper);
+		topLayout = (LinearLayout)findViewById(R.id.search_layout_top);
+		listLayout = (RelativeLayout)findViewById(R.id.search_layout_list_layout);
 	}
 	
 	private void init(){
@@ -103,12 +112,32 @@ public class SearchActivity extends Activity {
 	}
 	
 	private void search(){
+		startAnim();
 		SchoolBusModel model = SchoolBusModel.getInstance();
     	List<BusInfo> busInfo = model.getBus(this,start,end,weekDay,SchoolBusModel.SUMMER_TIME);
     	
     	BaseAdapter adapter = new BusCellAdapter(this,busInfo,listView);
     	listView.setAdapter(adapter);
+    	wrapper.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT));
     	Log.v(TAG, busInfo.toString());
+	}
+	
+	/**开始动画*/
+	private void startAnim(){
+		float fromXDelta = topLayout.getLeft();
+		float fromYDelta = topLayout.getTop();
+		float toXDelta = wrapper.getLeft();
+		float toYDelta = wrapper.getTop();
+		Animation anim = new TranslateAnimation(fromXDelta, toXDelta, fromYDelta, toYDelta);
+		anim.setFillAfter(true);
+		anim.setDuration(400);
+		wrapper.startAnimation(anim);
+		
+		Animation anima = new AlphaAnimation(0, 1);
+		anima.setFillAfter(true);
+		anima.setDuration(500);
+		anima.setStartOffset(350);
+		listLayout.startAnimation(anima);
 	}
 	
 	private boolean checkInput(){

@@ -6,6 +6,12 @@
     android:orientation="vertical" >
     
     <LinearLayout
+        android:id="@+id/search_layout_wrapper"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        >
+    <LinearLayout
         android:id="@+id/search_layout_top"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/search_top_height"
@@ -44,7 +50,7 @@
             android:textSize="@dimen/choose_weekday_text_size"
             />
         </LinearLayout>
-        
+
         <TextView
             android:id="@+id/search_layout_choose_des"
             android:layout_width="0dp"
@@ -70,8 +76,9 @@
             />
         
     </LinearLayout>
-    
-    <RelativeLayout
+	</LinearLayout>
+	    <RelativeLayout
+        android:id="@+id/search_layout_list_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" 
         android:padding="@dimen/padding_xlarge"
