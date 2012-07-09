@@ -189,12 +189,9 @@ public class SettingsActivity extends PreferenceActivity {
 		NetworkInfo ni=cm.getActiveNetworkInfo();
 		if(ni==null||!ni.isConnected()){
 			AlertDialog.Builder ab=new AlertDialog.Builder(this);
-			ab.setMessage("当前未连接网络！请查看网络状态.").setPositiveButton("确定", new OnClickListener() {
-				
-				@Override
+			ab.setMessage("当前未连接网络！请查看网络状态.").setPositiveButton("确定",  new AlertDialog.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
-						dialog.dismiss();
+					dialog.dismiss();
 				}
 			}).show();
 			return false;

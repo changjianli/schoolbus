@@ -31,12 +31,12 @@ import android.widget.Toast;
 public class SearchActivity extends Activity {
 
 	private TextView startPlace,startTime,endPlace,betweenPlace,remark;
-	private TextView chooseDes ,isWeekDay,schedule;
+	private TextView chooseDes ,isWeekDay,schedule,title;
 	private ImageView search;
 	private String start,end,rawStart;
 	private ListView listView;
 	private LinearLayout wrapper,topLayout;
-	private RelativeLayout listLayout;
+	private RelativeLayout listLayout,titleLayout;
 	private static final String TAG = SearchActivity.class.getSimpleName();
 	
 	private int weekDay,scheduleType;
@@ -81,6 +81,8 @@ public class SearchActivity extends Activity {
 		wrapper = (LinearLayout)findViewById(R.id.search_layout_wrapper);
 		topLayout = (LinearLayout)findViewById(R.id.search_layout_top);
 		listLayout = (RelativeLayout)findViewById(R.id.search_layout_list_layout);
+		title = (TextView)findViewById(R.id.search_layout_title_tv);
+		titleLayout = (RelativeLayout)findViewById(R.id.search_layout_title_layout);
 	}
 	
 	private void init(){
@@ -104,6 +106,8 @@ public class SearchActivity extends Activity {
 		if(scheduleType == SchoolBusModel.SUMMER_TIME)
 			schedule.setText(getResources().getString(R.string.schedule_tip_summer));
 		else schedule.setText(getResources().getString(R.string.schedule_tip_winter));
+		schedule.getPaint().setFakeBoldText(true);
+		title.setText("起始地: "+start);
 		
 		//TODO 皮肤相关
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
@@ -112,7 +116,7 @@ public class SearchActivity extends Activity {
 		chooseDes.setBackgroundResource(color);
 		isWeekDay.setBackgroundResource(color);
 		schedule.setTextColor(getResources().getColor(color));
-		
+		titleLayout.setBackgroundResource(color);
 		
 	}
 	
@@ -138,8 +142,10 @@ public class SearchActivity extends Activity {
 	private void startAnim(){
 		float fromXDelta = topLayout.getLeft();
 		float fromYDelta = topLayout.getTop();
+//		float toXDelta = title.getLeft();
+//		float toYDelta = title.getBottom();
 		float toXDelta = wrapper.getLeft();
-		float toYDelta = wrapper.getTop();
+		float toYDelta = wrapper.getTop()-titleLayout.getHeight();
 		Animation anim = new TranslateAnimation(fromXDelta, toXDelta, fromYDelta, toYDelta);
 		anim.setFillAfter(true);
 		anim.setDuration(400);

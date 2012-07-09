@@ -4,7 +4,20 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     android:orientation="vertical" >
-    
+    <RelativeLayout
+        android:id="@+id/search_layout_title_layout"
+        android:layout_height="40dp"
+        android:layout_width="fill_parent" 
+        >
+        <TextView
+            android:id="@+id/search_layout_title_tv"
+            android:layout_height="fill_parent"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            />
+    </RelativeLayout>
     <LinearLayout
         android:id="@+id/search_layout_wrapper"
         android:layout_width="fill_parent"
@@ -25,6 +38,7 @@
             >
             <TextView
              android:id="@+id/search_layout_schedule"
+             android:textStyle="italic"
             android:layout_height="@dimen/search_top_text_height"
             android:layout_width="fill_parent"
             android:textColor="@color/main_color_blue"
