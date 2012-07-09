@@ -51,19 +51,18 @@ public final class R {
     }
     public static final class drawable {
         public static final int bg=0x7f020000;
-        public static final int bg3=0x7f020001;
-        public static final int ic_action_search=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int ic_menu_search_local_default=0x7f020004;
-        public static final int ic_menu_search_local_pressed=0x7f020005;
-        public static final int ic_menu_setting_default=0x7f020006;
-        public static final int ic_menu_setting_pressed=0x7f020007;
-        public static final int more=0x7f020008;
-        public static final int point_normal=0x7f020009;
-        public static final int point_selected=0x7f02000a;
-        public static final int search_button=0x7f02000b;
-        public static final int settings_button=0x7f02000c;
-        public static final int switcher_text=0x7f02000d;
+        public static final int ic_action_search=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int ic_menu_search_local_default=0x7f020003;
+        public static final int ic_menu_search_local_pressed=0x7f020004;
+        public static final int ic_menu_setting_default=0x7f020005;
+        public static final int ic_menu_setting_pressed=0x7f020006;
+        public static final int more=0x7f020007;
+        public static final int point_normal=0x7f020008;
+        public static final int point_selected=0x7f020009;
+        public static final int search_button=0x7f02000a;
+        public static final int settings_button=0x7f02000b;
+        public static final int switcher_text=0x7f02000c;
     }
     public static final class id {
         public static final int bus_list_cell_entry=0x7f0b0009;
