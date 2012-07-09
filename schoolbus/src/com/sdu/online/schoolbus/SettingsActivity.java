@@ -157,22 +157,27 @@ public class SettingsActivity extends PreferenceActivity {
 			final Editor editor = sp.edit();
 			builder.setSingleChoiceItems(items, selected, new AlertDialog.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
-					int value = 0;
+					int value1 = 0,value2 = 0;
 					switch(which){
 					case 0:
-						value = R.color.main_color_blue;
+						value1 = R.color.main_color_blue;
+						value2 = R.color.main_color_blue_alpha;
 						break;
 					case 1:
-						value = R.color.main_color_purple;
+						value1 = R.color.main_color_purple;
+						value2 = R.color.main_color_purple_alpha;
 						break;
 					case 2:
-						value = R.color.main_color_green;
+						value1 = R.color.main_color_green;
+						value2 = R.color.main_color_green_alpha;
 						break;
 					case 3:
-						value = R.color.main_color_red;
+						value1 = R.color.main_color_red;
+						value2 = R.color.main_color_red_alpha;
 						break;
 					}
-					editor.putInt("color_theme", value);
+					editor.putInt("color_theme", value1);
+					editor.putInt("color_theme_alpha", value2);
 					editor.commit();
 					dialog.dismiss();
 					colorThemeChanaged();

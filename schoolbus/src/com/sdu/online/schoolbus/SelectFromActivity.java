@@ -114,6 +114,7 @@ public class SelectFromActivity extends Activity {
 		if(sp.getInt("color_theme", 0) == 0){
 			editor.putInt("color_theme", R.color.main_color_blue);
 			editor.putInt("background", R.drawable.bg);
+			editor.putInt("color_theme_alpha", R.color.main_color_blue_alpha);
 		}
 		editor.commit();
 		
