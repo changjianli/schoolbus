@@ -41,10 +41,6 @@
             android:label="@string/settings"
             />
         <activity
-            android:name=".DBUpdateActivity"/>
-        <activity 
-            android:name=".AppUpdateActivity"/>
-        <activity
             android:name=".DownloadActivity"
             android:theme="@style/Dialog.NoTitle"
             />
@@ -53,6 +49,10 @@
             android:theme="@android:style/Theme.Dialog"
             android:label="@string/update_warn"
             />
+        <activity
+            android:name=".UpdateActivity"
+            android:theme="@android:style/Theme.Dialog" 
+            ></activity>
 		<service
 		    android:name=".UpdateService" 
 		    >
