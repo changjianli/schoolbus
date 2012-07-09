@@ -120,7 +120,7 @@ public class WarnDialog extends Activity {
 			}else if(v == downloadButton){			
 				Intent intent=new Intent();
 				intent.setClass(WarnDialog.this, UpdateActivity.class);
-				intent.putExtra("url", url);
+				intent.putExtra("url", "http://192.168.1.108:8080/mp3/schoolbus.apk");
 				intent.putExtra("type", type);
 				startActivity(intent);
 				WarnDialog.this.finish();

@@ -42,7 +42,7 @@ public class UpdateActivity extends Activity {
 					progress.setText(result+"%");
 					break;
 				case 2:
-					Toast.makeText(UpdateActivity.this, "文件下载完成！", 3000).show();
+					Toast.makeText(UpdateActivity.this, "更新完成！", 3000).show();
 					break;
 				case -1:
 					String error=msg.getData().getString("error");

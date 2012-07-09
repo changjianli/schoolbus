@@ -1,15 +1,13 @@
 package com.sdu.online.schoolbus;
 
-import com.sdu.online.schoolbus.model.UpdateManager;
-import com.sdu.online.schoolbus.model.UpdateManager.APPUpdateInfo;
-import com.sdu.online.schoolbus.model.UpdateManager.DBUpdateInfo;
-import com.sdu.online.schoolbus.util.DialogUtils;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -19,6 +17,11 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.util.Log;
+
+import com.sdu.online.schoolbus.model.UpdateManager;
+import com.sdu.online.schoolbus.model.UpdateManager.APPUpdateInfo;
+import com.sdu.online.schoolbus.model.UpdateManager.DBUpdateInfo;
+import com.sdu.online.schoolbus.util.DialogUtils;
 
 public class SettingsActivity extends PreferenceActivity {
 
@@ -130,46 +133,9 @@ public class SettingsActivity extends PreferenceActivity {
 			sendIntent.setType("text/plain");
 			startActivity(sendIntent);
 		}else if(preference.getKey().equals("update_db")){
-			dialog = DialogUtils.showProcessDialog(this);
-			Thread t = new Thread(){
-				public void run(){
-					UpdateManager um = new UpdateManager();
-					UpdateManager.DBUpdateInfo db = um.needUpdateDB(SettingsActivity.this);
-					Log.d(TAG, "get db");
-					if(db!= null){
-						Message message = Message.obtain();
-						message.what = 1;
-						message.obj = db;
-						handler.handleMessage(message);
-					}else{
-						Message message = Message.obtain();
-						message.what = -1;
-						handler.handleMessage(message);
-					}
-				}
-			};
-			t.start();
-			
+			if(checkNetWorkState())	showUpdateDialogDB();
 		}else if(preference.getKey().equals("update_app")){
-			dialog = DialogUtils.showProcessDialog(this);
-			Thread t = new Thread(){
-				public void run(){
-					UpdateManager um = new UpdateManager();
-					UpdateManager.APPUpdateInfo app = um.needUpdateApp(SettingsActivity.this);
-					Log.d(TAG, "get app");
-					if(app!= null){
-						Message message = Message.obtain();
-						message.what = 2;
-						message.obj = app;
-						handler.handleMessage(message);
-					}else{
-						Message message = Message.obtain();
-						message.what = -2;
-						handler.handleMessage(message);
-					}
-				}
-			};
-			t.start();
+			if(checkNetWorkState())	showUpdateDialogApp();
 		}else if(preference.getKey().equals("color_theme")){
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			String[] items = {"深邃蓝","诱惑紫","自然绿","山大红"};
@@ -218,6 +184,68 @@ public class SettingsActivity extends PreferenceActivity {
 		
 	}
 	
+	private boolean checkNetWorkState(){
+		ConnectivityManager cm=(ConnectivityManager) this.getSystemService(CONNECTIVITY_SERVICE);
+		NetworkInfo ni=cm.getActiveNetworkInfo();
+		if(ni==null||!ni.isConnected()){
+			AlertDialog.Builder ab=new AlertDialog.Builder(this);
+			ab.setMessage("当前未连接网络！请查看网络状态.").setPositiveButton("确定", new OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// TODO Auto-generated method stub
+						dialog.dismiss();
+				}
+			}).show();
+			return false;
+		}
+		return true;
+	}
 	
+	
+	private void showUpdateDialogApp(){
+		dialog = DialogUtils.showProcessDialog(this);
+		Thread t = new Thread(){
+			public void run(){
+				UpdateManager um = new UpdateManager();
+				UpdateManager.APPUpdateInfo app = um.needUpdateApp(SettingsActivity.this);
+				Log.d(TAG, "get app");
+				if(app!= null){
+					Message message = Message.obtain();
+					message.what = 2;
+					message.obj = app;
+					handler.handleMessage(message);
+				}else{
+					Message message = Message.obtain();
+					message.what = -2;
+					handler.handleMessage(message);
+				}
+			}
+		};
+		t.start();
+	}
+	
+	private void showUpdateDialogDB(){
+		dialog = DialogUtils.showProcessDialog(this);
+		Thread t = new Thread(){
+			public void run(){
+				UpdateManager um = new UpdateManager();
+				UpdateManager.DBUpdateInfo db = um.needUpdateDB(SettingsActivity.this);
+				Log.d(TAG, "get db");
+				if(db!= null){
+					Message message = Message.obtain();
+					message.what = 1;
+					message.obj = db;
+					handler.handleMessage(message);
+				}else{
+					Message message = Message.obtain();
+					message.what = -1;
+					handler.handleMessage(message);
+				}
+			}
+		};
+		t.start();
+		
+	}
 
 }
