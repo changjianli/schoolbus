@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="main_color_blue">#5692CD</color>
+    <color name="main_color_blue">#cc9C0C15</color>
     <color name="main_color_light">#ffffff</color>
     <color name="main_color_alpha">#44ffffff</color>
     <color name="main_color_dark">#ffffff</color>
-    <color name="main_color_text_theme">#5692CD</color>
+    <color name="main_color_text_theme">#cc9C0C15</color>
     
-    <!-- 99D9EA   #5692CD -->
+    <!-- 99D9EA   #5692CD #cc5830E8诱惑紫  	#cc3570E8   深邃蓝   #cc9C0C15 山大红  #cc33C82C 青草绿-->
 </resources>
