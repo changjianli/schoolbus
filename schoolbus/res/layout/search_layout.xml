@@ -105,6 +105,28 @@
             android:layout_width="fill_parent"
             android:scrollbars="vertical" 
             />
+        <LinearLayout
+            android:id="@+id/search_layout_no_found_layout"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:gravity="center" 
+            android:orientation="vertical"
+            >
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:src="@drawable/no_found"
+            />
+        <TextView 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/search_no_found"
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            />
+        </LinearLayout>
     </RelativeLayout>
 
 </LinearLayout>

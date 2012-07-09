@@ -35,7 +35,7 @@ public class SearchActivity extends Activity {
 	private ImageView search;
 	private String start,end,rawStart;
 	private ListView listView;
-	private LinearLayout wrapper,topLayout;
+	private LinearLayout wrapper,topLayout,noFoundLayout;
 	private RelativeLayout listLayout,titleLayout;
 	private static final String TAG = SearchActivity.class.getSimpleName();
 	
@@ -83,6 +83,7 @@ public class SearchActivity extends Activity {
 		listLayout = (RelativeLayout)findViewById(R.id.search_layout_list_layout);
 		title = (TextView)findViewById(R.id.search_layout_title_tv);
 		titleLayout = (RelativeLayout)findViewById(R.id.search_layout_title_layout);
+		noFoundLayout = (LinearLayout)findViewById(R.id.search_layout_no_found_layout);
 	}
 	
 	private void init(){
@@ -131,9 +132,15 @@ public class SearchActivity extends Activity {
 		startAnim();
 		SchoolBusModel model = SchoolBusModel.getInstance();
     	List<BusInfo> busInfo = model.getBus(this,start,end,weekDay,SchoolBusModel.SUMMER_TIME);
-    	
-    	BaseAdapter adapter = new BusCellAdapter(this,busInfo,listView);
-    	listView.setAdapter(adapter);
+    	if(!busInfo.isEmpty()){
+        	BaseAdapter adapter = new BusCellAdapter(this,busInfo,listView);
+        	listView.setAdapter(adapter);
+        	noFoundLayout.setVisibility(View.GONE);
+        	listView.setVisibility(View.VISIBLE);
+    	}else{
+    		listView.setVisibility(View.GONE);
+    		noFoundLayout.setVisibility(View.VISIBLE);
+    	}
     	wrapper.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT));
     	Log.v(TAG, busInfo.toString());
 	}
