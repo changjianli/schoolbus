@@ -51,18 +51,19 @@ public final class R {
     }
     public static final class drawable {
         public static final int bg=0x7f020000;
-        public static final int ic_action_search=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int ic_menu_search_local_default=0x7f020003;
-        public static final int ic_menu_search_local_pressed=0x7f020004;
-        public static final int ic_menu_setting_default=0x7f020005;
-        public static final int ic_menu_setting_pressed=0x7f020006;
-        public static final int more=0x7f020007;
-        public static final int point_normal=0x7f020008;
-        public static final int point_selected=0x7f020009;
-        public static final int search_button=0x7f02000a;
-        public static final int settings_button=0x7f02000b;
-        public static final int switcher_text=0x7f02000c;
+        public static final int bg3=0x7f020001;
+        public static final int ic_action_search=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int ic_menu_search_local_default=0x7f020004;
+        public static final int ic_menu_search_local_pressed=0x7f020005;
+        public static final int ic_menu_setting_default=0x7f020006;
+        public static final int ic_menu_setting_pressed=0x7f020007;
+        public static final int more=0x7f020008;
+        public static final int point_normal=0x7f020009;
+        public static final int point_selected=0x7f02000a;
+        public static final int search_button=0x7f02000b;
+        public static final int settings_button=0x7f02000c;
+        public static final int switcher_text=0x7f02000d;
     }
     public static final class id {
         public static final int bus_list_cell_entry=0x7f0b0009;
@@ -84,7 +85,9 @@ public final class R {
         public static final int main_layout_spinner_start=0x7f0b0015;
         public static final int main_layout_textview_end=0x7f0b0017;
         public static final int main_layout_textview_start=0x7f0b0014;
-        public static final int menu_settings=0x7f0b0035;
+        public static final int menu_settings=0x7f0b0038;
+        public static final int progress=0x7f0b0031;
+        public static final int progressBar=0x7f0b0032;
         public static final int remark_text=0x7f0b000c;
         public static final int sdu_bus_img=0x7f0b0001;
         public static final int sdu_logo=0x7f0b0000;
@@ -112,13 +115,14 @@ public final class R {
         public static final int start_p=0x7f0b0002;
         public static final int start_spinner=0x7f0b0003;
         public static final int start_text=0x7f0b000a;
+        public static final int text=0x7f0b0030;
         public static final int time_group=0x7f0b0005;
         public static final int time_text=0x7f0b000b;
-        public static final int waiting_progressBar=0x7f0b0030;
-        public static final int waiting_text=0x7f0b0031;
-        public static final int warn_button_cancle=0x7f0b0033;
-        public static final int warn_button_download=0x7f0b0034;
-        public static final int warn_textView=0x7f0b0032;
+        public static final int waiting_progressBar=0x7f0b0033;
+        public static final int waiting_text=0x7f0b0034;
+        public static final int warn_button_cancle=0x7f0b0036;
+        public static final int warn_button_download=0x7f0b0037;
+        public static final int warn_textView=0x7f0b0035;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
