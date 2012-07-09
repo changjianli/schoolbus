@@ -42,20 +42,21 @@
 	    <LinearLayout
 	        android:layout_height="fill_parent"
 	        android:layout_width="wrap_content"
-	        android:paddingTop="20dp"
+	        android:paddingBottom="15dp"
+	        android:gravity="bottom"
 	        android:layout_centerHorizontal="true"
 	        >
 	        
 	    <ImageView
 	        android:id="@+id/select_from_layout_iv1"
-	        android:layout_height="10dp"
-	        android:layout_width="10dp" 
+	        android:layout_height="15dp"
+	        android:layout_width="15dp" 
 	        android:src="@drawable/point_selected"
 	        />
 	    <ImageView
 	        android:id="@+id/select_from_layout_iv2"
-	        android:layout_height="10dp"
-	        android:layout_width="10dp" 
+	        android:layout_height="15dp"
+	        android:layout_width="15dp" 
 	        android:src="@drawable/point_normal"
 	        />
 	    

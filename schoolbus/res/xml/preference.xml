@@ -2,6 +2,14 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     >
     
+    <PreferenceCategory android:title="个性设置">
+        <Preference
+            android:title="主题设置"
+            android:key="color_theme"
+            android:summary="当前主题:深邃蓝" 
+            />
+    </PreferenceCategory>
+    
     <PreferenceCategory
         android:title="软件设置" 
         >

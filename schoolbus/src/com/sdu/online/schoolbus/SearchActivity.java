@@ -10,7 +10,9 @@ import com.sdu.online.schoolbus.model.SchoolBusModel;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -66,11 +68,11 @@ public class SearchActivity extends Activity {
 	}
 
 	private void findViews(){
-		startPlace = (TextView) findViewById(R.id.detail_layout_from_time);
-		startTime = (TextView)findViewById(R.id.detail_layout_from_time);
-		endPlace = (TextView)findViewById(R.id.detail_layout_to_place);
-		betweenPlace = (TextView)findViewById(R.id.detail_layout_between_place);
-		remark = (TextView)findViewById(R.id.detail_layout_remark);
+//		startPlace = (TextView) findViewById(R.id.detail_layout_from_time);
+//		startTime = (TextView)findViewById(R.id.detail_layout_from_time);
+//		endPlace = (TextView)findViewById(R.id.detail_layout_to_place);
+//		betweenPlace = (TextView)findViewById(R.id.detail_layout_between_place);
+//		remark = (TextView)findViewById(R.id.detail_layout_remark);
 		search = (ImageView)findViewById(R.id.search_layout_search_image);
 		chooseDes = (TextView)findViewById(R.id.search_layout_choose_des);
 		isWeekDay = (TextView)findViewById(R.id.search_layout_weekday);
@@ -102,6 +104,16 @@ public class SearchActivity extends Activity {
 		if(scheduleType == SchoolBusModel.SUMMER_TIME)
 			schedule.setText(getResources().getString(R.string.schedule_tip_summer));
 		else schedule.setText(getResources().getString(R.string.schedule_tip_winter));
+		
+		//TODO 皮肤相关
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+		int color = sp.getInt("color_theme", R.color.main_color_blue);
+		search.setBackgroundResource(color);
+		chooseDes.setBackgroundResource(color);
+		isWeekDay.setBackgroundResource(color);
+		schedule.setTextColor(getResources().getColor(color));
+		
+		
 	}
 	
 	private void setListeners(){

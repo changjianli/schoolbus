@@ -6,8 +6,10 @@ import com.sdu.online.schoolbus.model.UpdateManager.DBUpdateInfo;
 import com.sdu.online.schoolbus.util.DialogUtils;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -21,7 +23,7 @@ import android.util.Log;
 public class SettingsActivity extends PreferenceActivity {
 
 	private CheckBoxPreference autoUpdate,autoUpdateWifi;
-	private Preference appVersion,dbVersion;
+	private Preference appVersion,dbVersion,colorTheme;
 	//等待对话框
 	private AlertDialog dialog;
 	
@@ -67,29 +69,55 @@ public class SettingsActivity extends PreferenceActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.preference);
-		
 		findKeys();
 		init();
 		listen();
 	}
 	
+	
+
+
+
 	private void findKeys(){
 		autoUpdate = (CheckBoxPreference) findPreference("auto_update");
 		autoUpdateWifi = (CheckBoxPreference) findPreference("update_only_wifi");
 		appVersion = findPreference("update_app");
 		dbVersion = findPreference("update_db");
+		colorTheme = findPreference("color_theme");
 	}
 	
 	private void init(){
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 		appVersion.setSummary("当前软件版本: "+sp.getString("app_version", null));
 		dbVersion.setSummary("当前数据库版本: "+sp.getString("db_version", null));
+		colorThemeChanaged();
 	}
 	
 	private void listen(){
 		if(autoUpdate.isChecked()){
 			autoUpdateWifi.setEnabled(true);
 		}else autoUpdateWifi.setEnabled(false);
+
+	}
+	
+	private void colorThemeChanaged(){
+		SharedPreferences sps = PreferenceManager.getDefaultSharedPreferences(this);
+		String text = "当前主题: ";
+		switch(sps.getInt("color_theme", R.color.main_color_blue)){
+		case R.color.main_color_blue:
+			text +="深邃蓝";
+			break;
+		case R.color.main_color_purple:
+			text += "诱惑紫";
+			break;
+		case R.color.main_color_green:
+			text += "自然绿";
+			break;
+		case R.color.main_color_red:
+			text += "山大红";
+			break;
+		}
+		colorTheme.setSummary(text);
 	}
 
 	@Override
@@ -142,6 +170,48 @@ public class SettingsActivity extends PreferenceActivity {
 				}
 			};
 			t.start();
+		}else if(preference.getKey().equals("color_theme")){
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			String[] items = {"深邃蓝","诱惑紫","自然绿","山大红"};
+			SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+			int selected= 0;
+			switch(sp.getInt("color_theme", R.color.main_color_blue)){
+			case R.color.main_color_blue:
+				break;
+			case R.color.main_color_purple:
+				selected = 1;
+				break;
+			case R.color.main_color_green:
+				selected = 2;
+				break;
+			case R.color.main_color_red:
+				selected = 3;
+				break;
+			}
+			final Editor editor = sp.edit();
+			builder.setSingleChoiceItems(items, selected, new AlertDialog.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					int value = 0;
+					switch(which){
+					case 0:
+						value = R.color.main_color_blue;
+						break;
+					case 1:
+						value = R.color.main_color_purple;
+						break;
+					case 2:
+						value = R.color.main_color_green;
+						break;
+					case 3:
+						value = R.color.main_color_red;
+						break;
+					}
+					editor.putInt("color_theme", value);
+					editor.commit();
+					dialog.dismiss();
+					colorThemeChanaged();
+				}
+			}).show();
 		}
 		listen();
 		return super.onPreferenceTreeClick(preferenceScreen, preference);

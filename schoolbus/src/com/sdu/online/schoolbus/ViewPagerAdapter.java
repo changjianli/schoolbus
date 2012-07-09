@@ -4,7 +4,9 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.LayoutParams;
@@ -49,7 +51,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 		ViewHolder holder;
 		View v;
 //		if(container == null){
-//			v = mInflater.inflate(R.layout.select_from_pager, null);
+			v = mInflater.inflate(R.layout.select_from_pager, null);
 			holder = new ViewHolder();
 			holder.tv1 = (TextView) views.get(position).findViewById(R.id.select_from_tv1);
 			holder.tv2 = (TextView) views.get(position).findViewById(R.id.select_from_tv2);
@@ -63,6 +65,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 			setListener(holder.tv4);
 			setListener(holder.tv5);
 			setListener(holder.tv6);
+//			container.setTag(holder);
 //		}else
 //			holder = (ViewHolder) container.getTag();
 		switch(position){
@@ -85,6 +88,17 @@ public class ViewPagerAdapter extends PagerAdapter {
 			Log.d(TAG, "position 1");
 			break;
 		}
+		
+		//TODO 皮肤相关
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+		int color = sp.getInt("color_theme", R.color.main_color_blue);
+		holder.tv1.setBackgroundResource(color);
+		holder.tv2.setBackgroundResource(color);
+		holder.tv3.setBackgroundResource(color);
+		holder.tv4.setBackgroundResource(color);
+		holder.tv5.setBackgroundResource(color);
+		holder.tv6.setBackgroundResource(color);
+		
 		LayoutParams params = new LayoutParams();
 		params.height = LayoutParams.FILL_PARENT;
 		params.width = LayoutParams.FILL_PARENT;

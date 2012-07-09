@@ -2,8 +2,10 @@ package com.sdu.online.schoolbus;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -64,6 +66,10 @@ public class ChooseDesActivity extends Activity {
 			tv.setWidth((int)cellWidth);
 			tv.setTextSize(fontSize);
 			tv.setOnClickListener(listener);
+			//TODO 换肤相关
+			SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+			int color = sp.getInt("color_theme", R.color.main_color_blue);
+			tv.setBackgroundResource(color);
 			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams
 					(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 			lp.setMargins((int)margin, (int)margin,(int)margin,(int)margin);

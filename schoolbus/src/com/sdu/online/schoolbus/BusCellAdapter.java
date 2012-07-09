@@ -5,6 +5,8 @@ import com.sdu.online.schoolbus.model.BusInfo;
 import com.sdu.online.schoolbus.model.Place;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +49,7 @@ public class BusCellAdapter extends BaseAdapter {
 
 	public View getView(int position, View convertView, ViewGroup viewParent) {
 		final ViewHolder holder;
-//		if(convertView == null){
+		if(convertView == null){
 			convertView = mInflater.inflate(R.layout.bus_list_cell, null);
 			holder = new ViewHolder();
 			holder.tv1 = (TextView) convertView.findViewById(R.id.start_text);
@@ -60,9 +62,9 @@ public class BusCellAdapter extends BaseAdapter {
 			holder.detailEndPlace= (TextView)convertView.findViewById(R.id.detail_layout_to_place);
 			holder.detailRemark = (TextView)convertView.findViewById(R.id.detail_layout_remark);
 			holder.title = (LinearLayout)convertView.findViewById(R.id.bus_list_cell_entry);
-			
-//		}else 
-//			holder = (ViewHolder)convertView.getTag();
+			convertView.setTag(holder);
+		}else 
+			holder = (ViewHolder)convertView.getTag();
 		holder.tv2.setText(busInfo.get(position).getFullFrom());
 		holder.tv1.setText(busInfo.get(position).getStartTime());
 		holder.detailStartPlace.setText(busInfo.get(position).getFullFrom());
@@ -96,6 +98,11 @@ public class BusCellAdapter extends BaseAdapter {
 				clickedHolder = holder;
 			}
 		});
+		
+		//TODO 换肤相关
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+		int color = sp.getInt("color_theme", R.color.main_color_blue);
+		holder.title.setBackgroundResource(color);
 		return convertView;
 	}
 	
