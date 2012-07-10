@@ -279,12 +279,11 @@ public class SettingsActivity extends PreferenceActivity {
 	private void emailUs(){
 		Intent mEmailIntent =  new Intent(android.content.Intent.ACTION_SENDTO);
 //	    mEmailIntent.setType("gmail----/gmail---");
-	    mEmailIntent.setData(Uri.parse("mailto:873915231@qq.com"));
-//		mEmailIntent.setData()
-//	    String receiver = "873915231@qq.com";
-//	    String sub = "校车查询android应用程序反馈"; 
-//	    mEmailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{receiver}); 
-//	    mEmailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, sub);
+	    mEmailIntent.setData(Uri.parse("mailto:"));
+	    String receiver = "873915231@qq.com";
+	    String sub = "校车查询android应用程序反馈"; 
+	    mEmailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{receiver}); 
+	    mEmailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, sub);
 	    PackageManager pManager = getPackageManager();
 	    List<ResolveInfo> activities = pManager.queryIntentActivities(mEmailIntent, 0);
 //	    System.out.println(activities.toString());
@@ -292,13 +291,6 @@ public class SettingsActivity extends PreferenceActivity {
 	    if(activities.isEmpty())
 	    	Toast.makeText(this, "您尚未安装gmail或同类软件,无法发送邮件!", Toast.LENGTH_SHORT).show(); 
 	    else startActivity(mEmailIntent);
-//	    for(ResolveInfo ri :activities){
-//	    	if(ri.activityInfo.packageName.equals("com.google.android.gm")){
-//	    		startActivity(mEmailIntent);
-//	    	}else{
-//	    		Toast.makeText(this, "您尚未安装gmail或同类软件,无法发送邮件!", Toast.LENGTH_SHORT).show();
-//	    	}
-//	    } 
 	}
 
 }
