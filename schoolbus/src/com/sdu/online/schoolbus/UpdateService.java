@@ -14,7 +14,11 @@ import com.sdu.online.schoolbus.util.DialogUtils;
 import com.sdu.online.schoolbus.util.DownloadUtils;
 
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
@@ -32,21 +36,7 @@ public class UpdateService extends Service {
 	private boolean autoUpdate,autoUpdateWifi;
 	
 	private int type;
-	private AlertDialog dialog;
 	private boolean needNoUpdateWarn = false;
-	
-	private Handler handler = new Handler(){
-		@Override
-		public void handleMessage(Message msg) {
-			switch(msg.what){
-			case 1:
-				break;
-			}
-			super.handleMessage(msg);
-		}
-		
-	};
-	
 	
 	@Override
 	public IBinder onBind(Intent arg0) {
@@ -55,36 +45,58 @@ public class UpdateService extends Service {
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		init(intent);
+		init();
 		Thread t =new Thread(){
 			public void run(){
 				Log.d(TAG, "download started...");
 				UpdateManager um = new UpdateManager();
 				UpdateManager.DBUpdateInfo db = um.needUpdateDB(UpdateService.this);
-				if(db != null){
-					//update
-				}
+				if(db != null) notifyUser(db);
+				UpdateManager.APPUpdateInfo app = um.needUpdateApp(UpdateService.this);
+				if(app != null) notifyUser(app);
+				//系统随时可以停止服务
+				UpdateService.this.stopSelf();
 			}
 		};
 		t.start();
 		return super.onStartCommand(intent, flags, startId);
 	}
 	
-	private void finish(){
-		this.stopSelf();
-	}
-	
-	private void init(Intent intent){
+	private void init(){
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 		autoUpdate = sp.getBoolean("auto_update", true);
 		autoUpdateWifi = sp.getBoolean("update_only_wifi", false);
-		
-		type = intent.getIntExtra(TYPE_NAME, 3);
-		if(type != 3) needNoUpdateWarn = true; 
-		
 	}
 	
 	
+	private void notifyUser(UpdateManager.DBUpdateInfo db){
+		NotificationManager nm = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);               
+		Notification n = new Notification(R.drawable.ic_launcher, "校车查询数据库有更新", System.currentTimeMillis());             
+		n.flags = Notification.FLAG_AUTO_CANCEL;
+		Intent i = new Intent(this, UpdateActivity.class);
+		i.putExtra("type", 1);
+		i.putExtra("url", db.url);
+		i.putExtra("version", db.version);
+		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);           
+		//PendingIntent
+		PendingIntent contentIntent = PendingIntent.getActivity(this,R.string.app_name,i,PendingIntent.FLAG_UPDATE_CURRENT);
+		n.setLatestEventInfo(this,"数据库可更新","点击以更新到最新版数据库,保持最新的校车信息",contentIntent);
+		nm.notify(R.string.app_name, n);
+	}
 	
+	private void notifyUser(UpdateManager.APPUpdateInfo app){
+		NotificationManager nm = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);               
+		Notification n = new Notification(R.drawable.ic_launcher, "校车查询软件有更新", System.currentTimeMillis());             
+		n.flags = Notification.FLAG_AUTO_CANCEL;
+		Intent i = new Intent(this, UpdateActivity.class);
+		i.putExtra("type", 2);
+		i.putExtra("url", app.url);
+		i.putExtra("version", app.version);
+		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);           
+		//id+1是为了与上一条避免重复而覆盖
+		PendingIntent contentIntent = PendingIntent.getActivity(this,R.string.app_name+1,i,PendingIntent.FLAG_UPDATE_CURRENT);
+		n.setLatestEventInfo(this,"应用程序可更新","点击升级校车查询",contentIntent);
+		nm.notify(R.string.app_name+1, n);
+	}
 
 }

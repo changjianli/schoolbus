@@ -48,11 +48,11 @@ public class UpdateActivity extends Activity {
 					progress.setText(result+"%");
 					break;
 				case 2:
-					Toast.makeText(UpdateActivity.this, "更新完成！", 3000).show();
+					Toast.makeText(UpdateActivity.this, "更新完成！", Toast.LENGTH_SHORT).show();
 					break;
 				case -1:
 					String error=msg.getData().getString("error");
-					Toast.makeText(UpdateActivity.this, error,3000).show();
+					Toast.makeText(UpdateActivity.this, error,Toast.LENGTH_SHORT).show();
 					break;
 				}
 			}
@@ -100,6 +100,7 @@ public class UpdateActivity extends Activity {
 						Editor editor = sp.edit();
 						editor.putString("db_version", version);
 						editor.commit();
+//						Toast.makeText(UpdateActivity.this, "数据库更新完毕", Toast.LENGTH_SHORT);
 						UpdateActivity.this.finish();
 					} catch (IOException e) {
 						e.printStackTrace();
@@ -153,7 +154,6 @@ public class UpdateActivity extends Activity {
     		bis.close();
     		is.close();
     	}catch (Exception ex) {
-			// TODO: handle exception
     		ex.printStackTrace();
 		}
     	return file;
