@@ -21,6 +21,9 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.NetworkInfo.State;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -34,7 +37,8 @@ public class UpdateService extends Service {
 	private static final String TAG = UpdateService.class.getSimpleName();
 	
 	private boolean autoUpdate,autoUpdateWifi;
-	
+	private NetworkInfo ni;
+	private State wifi;
 	private int type;
 	private boolean needNoUpdateWarn = false;
 	
@@ -46,6 +50,7 @@ public class UpdateService extends Service {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		init();
+		if((ni!=null&&ni.isConnected()&&!autoUpdateWifi)||(ni!=null&&ni.isConnected()&&wifi==ni.getState())){
 		Thread t =new Thread(){
 			public void run(){
 				Log.d(TAG, "download started...");
@@ -59,6 +64,7 @@ public class UpdateService extends Service {
 			}
 		};
 		t.start();
+		}
 		return super.onStartCommand(intent, flags, startId);
 	}
 	
@@ -66,6 +72,9 @@ public class UpdateService extends Service {
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 		autoUpdate = sp.getBoolean("auto_update", true);
 		autoUpdateWifi = sp.getBoolean("update_only_wifi", false);
+		ConnectivityManager cm=(ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
+		wifi=cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState();
+		ni=cm.getActiveNetworkInfo();
 	}
 	
 	

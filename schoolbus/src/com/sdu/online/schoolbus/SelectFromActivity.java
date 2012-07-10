@@ -36,9 +36,6 @@ public class SelectFromActivity extends Activity {
 		setContentView(R.layout.select_from_layout);
 		findViews();
 		init();
-		Intent intent = new Intent();
-		intent.setClass(this, UpdateService.class);
-		startService(intent);
 	}
 	
 	
@@ -117,6 +114,11 @@ public class SelectFromActivity extends Activity {
 			editor.putInt("color_theme_alpha", R.color.main_color_blue_alpha);
 		}
 		editor.commit();
+		if(sp.getBoolean("auto_update", true)){
+			Intent intent = new Intent();
+			intent.setClass(this, UpdateService.class);
+			startService(intent);
+		}
 		
 	}
 }
