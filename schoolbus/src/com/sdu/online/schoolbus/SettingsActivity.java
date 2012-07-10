@@ -1,13 +1,22 @@
 package com.sdu.online.schoolbus;
 
+import java.net.URI;
+import java.net.URL;
+import java.util.List;
+
+import org.apache.http.protocol.HTTP;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,7 +25,9 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
+import android.support.v4.content.IntentCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.sdu.online.schoolbus.model.UpdateManager;
 import com.sdu.online.schoolbus.model.UpdateManager.APPUpdateInfo;
@@ -141,6 +152,12 @@ public class SettingsActivity extends PreferenceActivity {
 			sendIntent.putExtra(Intent.EXTRA_TEXT, "学生在线推出了一款移动校车查询助手啦！很棒，只有android智能机才有哦~~亲们快去下吧~~!");
 			sendIntent.setType("text/plain");
 			startActivity(sendIntent);
+		}else if(preference.getKey().equals("about_us")){
+			Intent intent = new Intent();
+			intent.setClass(this, About.class);
+			startActivity(intent);
+		}else if(preference.getKey().equals("contact_us")){
+			emailUs();
 		}else if(preference.getKey().equals("update_db")){
 			if(checkNetWorkState())	showUpdateDialogDB();
 		}else if(preference.getKey().equals("update_app")){
@@ -257,6 +274,31 @@ public class SettingsActivity extends PreferenceActivity {
 		};
 		t.start();
 		
+	}
+	
+	private void emailUs(){
+		Intent mEmailIntent =  new Intent(android.content.Intent.ACTION_SENDTO);
+//	    mEmailIntent.setType("gmail----/gmail---");
+	    mEmailIntent.setData(Uri.parse("mailto:873915231@qq.com"));
+//		mEmailIntent.setData()
+//	    String receiver = "873915231@qq.com";
+//	    String sub = "校车查询android应用程序反馈"; 
+//	    mEmailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{receiver}); 
+//	    mEmailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, sub);
+	    PackageManager pManager = getPackageManager();
+	    List<ResolveInfo> activities = pManager.queryIntentActivities(mEmailIntent, 0);
+//	    System.out.println(activities.toString());
+	    
+	    if(activities.isEmpty())
+	    	Toast.makeText(this, "您尚未安装gmail或同类软件,无法发送邮件!", Toast.LENGTH_SHORT).show(); 
+	    else startActivity(mEmailIntent);
+//	    for(ResolveInfo ri :activities){
+//	    	if(ri.activityInfo.packageName.equals("com.google.android.gm")){
+//	    		startActivity(mEmailIntent);
+//	    	}else{
+//	    		Toast.makeText(this, "您尚未安装gmail或同类软件,无法发送邮件!", Toast.LENGTH_SHORT).show();
+//	    	}
+//	    } 
 	}
 
 }

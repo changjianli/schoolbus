@@ -60,6 +60,7 @@
         <Preference
             android:title="反馈给我们"
             android:key="contact_us"
+            android:summary="使用邮件发送您的建议"
             />
         <Preference
             android:title="关于"
