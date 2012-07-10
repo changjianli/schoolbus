@@ -8,19 +8,25 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import com.sdu.online.schoolbus.sql.DataBaseHelper;
+import com.sdu.online.schoolbus.util.FileUtils;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class UpdateActivity extends Activity {
-	private String url;
+	private String url,version;
 	private int type;
 	private  String storagepath;
 	private ProgressBar pb;
@@ -56,7 +62,6 @@ public class UpdateActivity extends Activity {
 	};
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.update);
 		findView();
@@ -65,19 +70,18 @@ public class UpdateActivity extends Activity {
 		Intent intent=getIntent();
 		url=intent.getStringExtra("url");
 		type = intent.getIntExtra("type", 0);
+		version = intent.getStringExtra("version");
 		if(type==2){
 			//downloadApk(url);	
 		 	new Thread(){		 		
 		 		@Override
 	 			public void run() {
-		 						// TODO Auto-generated method stub				
-			try {
-				File file=downfile(url,storagepath);
-				installApk(file);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+					try {
+						File file=downfile(url,storagepath);
+						installApk(file);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 		 		}
 		 	}.start();
 			
@@ -85,18 +89,21 @@ public class UpdateActivity extends Activity {
 		if(type==1){
 			//downloadDB(url,storagepath);
 			new Thread(){
-
 				@Override
 				public void run() {
-					// TODO Auto-generated method stub
 					try {
-						downfile(url,storagepath);
+						File fromFile = downfile(url,storagepath);
+						File file=UpdateActivity.this.getDatabasePath(DataBaseHelper.DATABASE_FILE_NAME);
+						FileUtils.copyfile(fromFile,file, true);
+						//更改数据库版本号
+						SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(UpdateActivity.this);
+						Editor editor = sp.edit();
+						editor.putString("db_version", version);
+						editor.commit();
 						UpdateActivity.this.finish();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				
 				}
 				
 			}.start();
@@ -117,7 +124,8 @@ public class UpdateActivity extends Activity {
     	String fileName=url.substring(url.lastIndexOf("/")+1);
     	URL myURL=new URL(url);
     	HttpURLConnection conn=(HttpURLConnection)myURL.openConnection();
-    	conn.setConnectTimeout(5000);
+    	conn.setConnectTimeout(6000);
+    	conn.setReadTimeout(3000);
     	conn.connect();
     	InputStream is=conn.getInputStream();
     	fileSize=conn.getContentLength();

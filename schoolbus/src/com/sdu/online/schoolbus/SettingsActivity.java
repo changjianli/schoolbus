@@ -31,6 +31,7 @@ public class SettingsActivity extends PreferenceActivity {
 	private AlertDialog dialog;
 	
 	private static final String TAG = SettingsActivity.class.getSimpleName();
+	//根据下载DB或下载app不同返回信息刷新界面
 	private Handler handler = new Handler(){
 
 		@Override
@@ -48,6 +49,7 @@ public class SettingsActivity extends PreferenceActivity {
 				intent.putExtra("text", db.toString());
 				intent.putExtra("type", 1);
 				intent.putExtra("url", db.url);
+				intent.putExtra("version",db.version);
 				startActivity(intent);
 				break;
 			case 2:
@@ -58,6 +60,7 @@ public class SettingsActivity extends PreferenceActivity {
 				it.putExtra("text", app.toString());
 				it.putExtra("type", 2);
 				it.putExtra("url", app.url);
+				it.putExtra("version",app.version);
 				startActivity(it);
 				break;
 			case -2:
@@ -73,12 +76,18 @@ public class SettingsActivity extends PreferenceActivity {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.preference);
 		findKeys();
-		init();
 		listen();
 	}
 	
 	
 
+
+
+	@Override
+	protected void onResume() {
+		init();
+		super.onResume();
+	}
 
 
 	private void findKeys(){
@@ -194,7 +203,7 @@ public class SettingsActivity extends PreferenceActivity {
 		NetworkInfo ni=cm.getActiveNetworkInfo();
 		if(ni==null||!ni.isConnected()){
 			AlertDialog.Builder ab=new AlertDialog.Builder(this);
-			ab.setMessage("当前未连接网络！请查看网络状态.").setPositiveButton("确定",  new AlertDialog.OnClickListener() {
+			ab.setMessage("当前未连接网络！请先检查网络状态.").setPositiveButton("确定",  new AlertDialog.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 					dialog.dismiss();
 				}

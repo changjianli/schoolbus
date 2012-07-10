@@ -40,6 +40,7 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/settings"
+            android:theme="@android:style/Theme.Black"
             />
         <activity
             android:name=".DownloadActivity"
