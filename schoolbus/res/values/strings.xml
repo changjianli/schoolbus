@@ -19,6 +19,7 @@
     <string name="settings">设置与帮助</string>
     <string name="about">关于</string>
     <string name="waiting_update">正在检查更新\n请稍后</string>
+    <string name="copyright">Copyright © 2012 山东大学 学生在线. All Rights Reserved.</string>
     
      <string-array
          name="bus_start_array"

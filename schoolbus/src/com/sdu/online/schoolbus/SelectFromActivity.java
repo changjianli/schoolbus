@@ -28,14 +28,15 @@ public class SelectFromActivity extends Activity {
 	ImageView iv1 = null;
 	ImageView iv2 = null; 
 	ImageView settingsView ;
-	RelativeLayout topLayout;
 	SharedPreferences sp;
+	RelativeLayout topLayout;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.select_from_layout);
 		findViews();
-		init();
+		sp = PreferenceManager.getDefaultSharedPreferences(this);
 	}
 	
 	
@@ -93,32 +94,5 @@ public class SelectFromActivity extends Activity {
 		});
 	}
 
-	private void init(){
-		//一些初始化配置
-		sp = PreferenceManager.getDefaultSharedPreferences(this);
-		PackageInfo info = null;
-		Editor editor= sp.edit();
-		try {
-			 info = getPackageManager().getPackageInfo(this.getPackageName(), 0);
-		} catch (NameNotFoundException e) {e.printStackTrace();}
-		if(sp.getString("app_version",null) == null){
-			editor.putString("app_version", info.versionName);
-			Log.v("------", "app_version"+info.versionName);
-		}if(sp.getString("db_version", null) == null){
-			editor.putString("db_version", "20120707");
-		}
-		//初始颜色设置
-		if(sp.getInt("color_theme", 0) == 0){
-			editor.putInt("color_theme", R.color.main_color_blue);
-			editor.putInt("background", R.drawable.bg);
-			editor.putInt("color_theme_alpha", R.color.main_color_blue_alpha);
-		}
-		editor.commit();
-		if(sp.getBoolean("auto_update", true)){
-			Intent intent = new Intent();
-			intent.setClass(this, UpdateService.class);
-			startService(intent);
-		}
-		
-	}
+	
 }

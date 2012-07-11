@@ -70,9 +70,11 @@ public class BusCellAdapter extends BaseAdapter {
 		holder.detailStartPlace.setText(busInfo.get(position).getFullFrom());
 		holder.detailEndPlace.setText(busInfo.get(position).getFullTo());
 		holder.detailStartTime.setText(busInfo.get(position).getStartTime());
-		if(busInfo.get(position).getRemark() == null)
-			holder.detailRemark.setText("无");
-		else holder.detailRemark.setText(busInfo.get(position).getRemark());
+		String remark = "";
+		if(busInfo.get(position).getRemark() != null)
+			remark = busInfo.get(position).getRemark();
+		remark += "["+ (busInfo.get(position).getBusType() == 0 ? "班车":"交通车")+"]";
+		holder.detailRemark.setText(remark);
 		String betweenBuses = busInfo.get(position).getBusBetween();
 		holder.detailBetweenPlace.setText(betweenBuses);
 		

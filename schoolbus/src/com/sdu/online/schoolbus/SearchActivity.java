@@ -131,7 +131,7 @@ public class SearchActivity extends Activity {
 	private void search(){
 		startAnim();
 		SchoolBusModel model = SchoolBusModel.getInstance();
-    	List<BusInfo> busInfo = model.getBus(this,start,end,weekDay,SchoolBusModel.SUMMER_TIME);
+    	List<BusInfo> busInfo = model.getBus(this,start,end,weekDay,scheduleType);
     	if(!busInfo.isEmpty()){
         	BaseAdapter adapter = new BusCellAdapter(this,busInfo,listView);
         	listView.setAdapter(adapter);

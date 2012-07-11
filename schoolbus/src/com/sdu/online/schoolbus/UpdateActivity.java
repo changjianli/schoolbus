@@ -66,13 +66,11 @@ public class UpdateActivity extends Activity {
 		setContentView(R.layout.update);
 		findView();
 		storagepath=Environment.getExternalStorageDirectory().toString()+File.separator+"schoolbus";
-		createDir(storagepath);
 		Intent intent=getIntent();
 		url=intent.getStringExtra("url");
 		type = intent.getIntExtra("type", 0);
 		version = intent.getStringExtra("version");
-		if(type==2){
-			//downloadApk(url);	
+		if(type==2){	//apk
 		 	new Thread(){		 		
 		 		@Override
 	 			public void run() {
@@ -86,8 +84,7 @@ public class UpdateActivity extends Activity {
 		 	}.start();
 			
 		}
-		if(type==1){
-			//downloadDB(url,storagepath);
+		if(type==1){	//db
 			new Thread(){
 				@Override
 				public void run() {
@@ -114,12 +111,7 @@ public class UpdateActivity extends Activity {
 		pb=(ProgressBar) findViewById(R.id.progressBar);
 		progress=(TextView)findViewById(R.id.progress);
 	}
-	public void createDir(String path){
-			File dir=new File(path);
-			if(!dir.exists()){
-				dir.mkdirs();
-			}
-	}   
+
 	private  File downfile(String url,String storage)throws IOException{
 		
     	String fileName=url.substring(url.lastIndexOf("/")+1);
@@ -170,87 +162,6 @@ public class UpdateActivity extends Activity {
     	startActivity(intent);
     	UpdateActivity.this.finish();
     }
-//    public  File getFileFromServer(String path,String storagepath,ProgressDialog pd)throws Exception{
-//    	if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
-//    		URL url=new URL(path);
-//    		String fileName=path.substring(path.lastIndexOf("/")+1);
-//    		HttpURLConnection conn=(HttpURLConnection)url.openConnection();
-//    		conn.setConnectTimeout(5000);
-//    		int filesize=conn.getContentLength();
-//    		pd.setMax(filesize);
-//    		InputStream is=conn.getInputStream();
-//    		File file=new File(storagepath,fileName);
-//    		FileOutputStream fos=new FileOutputStream(file);
-//    		BufferedInputStream bis=new BufferedInputStream(is);
-//    		int length;
-//    		int total=0;
-//    		byte[] buffer=new byte[1024];
-//    		while((length=bis.read(buffer))!=-1){
-//    			fos.write(buffer, 0, length);
-//    			fos.flush();
-//    			total+=length;
-//    			pd.setProgress(total);
-//    			
-//    		}
-//    		fos.close();
-//    		bis.close();
-//    		is.close();
-//    		conn.disconnect();
-//    		return file;
-//    	}
-//    	
-//    	
-//		return null;
-//    	
-//    }
-//    protected void downloadDB(final String urlpath,final String storage){
-//    	final ProgressDialog pd;
-//    	pd=new ProgressDialog(this);
-//    	pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-//    	pd.setMessage("正在更新数据库!");
-//    	pd.show();
-//    	new Thread(){
-//
-//			@Override
-//			public void run() {
-//				// TODO Auto-generated method stub
-//				try {
-//					getFileFromServer(urlpath, storage, pd);
-//					
-//					pd.setMessage("更新数据库完成!");
-//					sleep(3000);
-//					pd.dismiss();
-//				} catch (Exception e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//			}
-//    		
-//    	}.start();
-//    }
-//    protected void downloadApk(String urlpath) {
-//    	final String path=urlpath;
-//		final ProgressDialog pd;
-//		pd=new ProgressDialog(this);
-//		pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-//		pd.setMessage("正在下载更新。。。");
-//		pd.show();
-//		new Thread(){
-//
-//			@Override
-//			public void run() {
-//				// TODO Auto-generated method stub
-//				try{
-//					File file=getFileFromServer(path,storagepath, pd);
-//					sleep(3000);
-//					installApk(file);
-//					pd.dismiss();
-//				}catch(Exception e){
-//					e.printStackTrace();
-//				}
-//			}
-//			
-//		}.start();
-//	}
+
 
 }

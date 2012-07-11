@@ -75,9 +75,11 @@ public class SchoolBusModel {
 		int schedule = -1;
 		if(cursor.moveToFirst()){
 			schedule = cursor.getInt(cursor.getColumnIndex("id"));
+			
 		}
 		cursor.deactivate();
 		sqlDB.close();
+		Log.v(TAG, "type:"+schedule);
 		return schedule;
 	}
 }

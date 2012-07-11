@@ -67,7 +67,8 @@ public final class R {
         public static final int point_selected=0x7f02000a;
         public static final int search_button=0x7f02000b;
         public static final int settings_button=0x7f02000c;
-        public static final int switcher_text=0x7f02000d;
+        public static final int splash=0x7f02000d;
+        public static final int switcher_text=0x7f02000e;
     }
     public static final class id {
         public static final int bus_list_cell_entry=0x7f0b0009;
@@ -141,9 +142,10 @@ public final class R {
         public static final int search_layout=0x7f030006;
         public static final int select_from_layout=0x7f030007;
         public static final int select_from_pager=0x7f030008;
-        public static final int update=0x7f030009;
-        public static final int waiting=0x7f03000a;
-        public static final int warn=0x7f03000b;
+        public static final int splash=0x7f030009;
+        public static final int update=0x7f03000a;
+        public static final int waiting=0x7f03000b;
+        public static final int warn=0x7f03000c;
     }
     public static final class menu {
         public static final int activity_main=0x7f0a0000;
@@ -151,48 +153,49 @@ public final class R {
     public static final class string {
         public static final int about=0x7f070011;
         public static final int app_name=0x7f070000;
-        public static final int btn_cancle=0x7f070029;
-        public static final int btn_download=0x7f07002a;
+        public static final int btn_cancle=0x7f07002a;
+        public static final int btn_download=0x7f07002b;
         public static final int bus_end=0x7f070005;
         public static final int bus_start=0x7f070004;
         public static final int bus_time=0x7f070006;
         public static final int bus_title=0x7f070007;
-        public static final int choose_des_tip=0x7f070021;
-        public static final int config_app_update_url=0x7f070027;
-        public static final int config_db_update_url=0x7f070028;
-        public static final int detail_between_place=0x7f070024;
-        public static final int detail_end_place=0x7f070025;
-        public static final int detail_remark=0x7f070026;
-        public static final int detail_start_place=0x7f070023;
-        public static final int detail_start_time=0x7f070022;
+        public static final int choose_des_tip=0x7f070022;
+        public static final int config_app_update_url=0x7f070028;
+        public static final int config_db_update_url=0x7f070029;
+        public static final int copyright=0x7f070013;
+        public static final int detail_between_place=0x7f070025;
+        public static final int detail_end_place=0x7f070026;
+        public static final int detail_remark=0x7f070027;
+        public static final int detail_start_place=0x7f070024;
+        public static final int detail_start_time=0x7f070023;
         public static final int end_station=0x7f07000b;
         public static final int hello_world=0x7f070001;
         public static final int menu_settings=0x7f070002;
         public static final int remark=0x7f07000e;
-        public static final int schedule_tip_summer=0x7f07001f;
-        public static final int schedule_tip_winter=0x7f070020;
+        public static final int schedule_tip_summer=0x7f070020;
+        public static final int schedule_tip_winter=0x7f070021;
         public static final int search=0x7f07000c;
-        public static final int search_no_found=0x7f07002c;
+        public static final int search_no_found=0x7f07002d;
         public static final int settings=0x7f070010;
-        public static final int start_palce_bao=0x7f070016;
-        public static final int start_palce_hong=0x7f070017;
-        public static final int start_palce_ma=0x7f07001c;
-        public static final int start_palce_nan=0x7f07001b;
-        public static final int start_palce_qian=0x7f070015;
-        public static final int start_palce_ruan=0x7f070018;
-        public static final int start_palce_san=0x7f070019;
-        public static final int start_palce_shun=0x7f07001d;
-        public static final int start_palce_wu=0x7f07001a;
-        public static final int start_palce_xing=0x7f070013;
-        public static final int start_palce_yan=0x7f07001e;
-        public static final int start_palce_zhong=0x7f070014;
+        public static final int start_palce_bao=0x7f070017;
+        public static final int start_palce_hong=0x7f070018;
+        public static final int start_palce_ma=0x7f07001d;
+        public static final int start_palce_nan=0x7f07001c;
+        public static final int start_palce_qian=0x7f070016;
+        public static final int start_palce_ruan=0x7f070019;
+        public static final int start_palce_san=0x7f07001a;
+        public static final int start_palce_shun=0x7f07001e;
+        public static final int start_palce_wu=0x7f07001b;
+        public static final int start_palce_xing=0x7f070014;
+        public static final int start_palce_yan=0x7f07001f;
+        public static final int start_palce_zhong=0x7f070015;
         public static final int start_station=0x7f07000a;
         public static final int time_nowork=0x7f070009;
         public static final int time_start=0x7f07000d;
         public static final int time_work=0x7f070008;
         public static final int title_activity_main=0x7f070003;
         public static final int update_title=0x7f07000f;
-        public static final int update_warn=0x7f07002b;
+        public static final int update_warn=0x7f07002c;
         public static final int waiting_update=0x7f070012;
     }
     public static final class style {
