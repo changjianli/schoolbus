@@ -73,16 +73,8 @@ public class BusCellAdapter extends BaseAdapter {
 		if(busInfo.get(position).getRemark() == null)
 			holder.detailRemark.setText("无");
 		else holder.detailRemark.setText(busInfo.get(position).getRemark());
-		List<Place> betweenBuses = busInfo.get(position).getBusBetween();
-		StringBuilder builder = new StringBuilder();
-		if (betweenBuses != null)
-			for(Place place :betweenBuses){
-				if (place != null){
-					builder.append(place);
-					builder.append("\n");
-				}
-			}
-		holder.detailBetweenPlace.setText(builder);
+		String betweenBuses = busInfo.get(position).getBusBetween();
+		holder.detailBetweenPlace.setText(betweenBuses);
 		
 		final int p = position;
 		final BusInfo bus = busInfo.get(position);

@@ -1,5 +1,6 @@
 package com.sdu.online.schoolbus.model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -43,9 +44,9 @@ public class SchoolBusModel {
 //		}
 		String sql;
 		if(schedule == SUMMER_TIME){
-			sql = "select * from summer_time where bus_from=? and bus_to=? and bus_type in(0,?)";
-		}else sql = "select * from winter_time where bus_from=? and bus_to=? and bus_type in(0,?)";
-		Cursor cursor=sqlDB.rawQuery(sql,new String[]{from,to,busType+""});
+			sql = "select * from summer_time where bus_type in (0,?) and id in (select id from search_table where from_=? and to_=?)";
+		}else sql = "select * from winter_time where bus_type in (0,?) and id in (select id from search_table where from_=? and to_=?)";
+		Cursor cursor=sqlDB.rawQuery(sql,new String[]{busType+"",from,to});
 		
 		while(cursor.moveToNext()){
 			BusInfo businfo=new BusInfo();
@@ -54,6 +55,7 @@ public class SchoolBusModel {
 			businfo.setBusType(cursor.getInt(cursor.getColumnIndex("bus_type")));
 			businfo.setFrom( new Place(from,cursor.getString(cursor.getColumnIndex("from_desc"))));
 			businfo.setTo( new Place(to,cursor.getString(cursor.getColumnIndex("to_desc"))));
+			businfo.setBusBetween(cursor.getString(cursor.getColumnIndex("bus_between")));
 			buslist.add(businfo);
 		}
 		cursor.deactivate();
@@ -65,9 +67,11 @@ public class SchoolBusModel {
 		DataBaseHelper dbhelper=new DataBaseHelper(context);
 		SQLiteDatabase sqlDB =dbhelper.getReadableDatabase();
 		Date date = new Date();
+		SimpleDateFormat sdf=new SimpleDateFormat("MMdd");
+		String datetime=sdf.format(date);	
+		Log.v(TAG, datetime);
 		String sql = "select id from summer_winter where start_<= ? and end_ >= ?";
-		String dateTime=DateFormat.format("MMDD", date).toString();
-		Cursor cursor = sqlDB.rawQuery(sql, new String[]{dateTime,dateTime});
+		Cursor cursor = sqlDB.rawQuery(sql, new String[]{datetime,datetime});
 		int schedule = -1;
 		if(cursor.moveToFirst()){
 			schedule = cursor.getInt(cursor.getColumnIndex("id"));

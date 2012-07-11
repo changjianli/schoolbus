@@ -14,9 +14,9 @@ public class BusInfo {
 	private Place to;
 	private int busType;
 	private String remark;
-	private ArrayList<Place> busBetween;
+	private String busBetween;
 
-	public ArrayList<Place> getBusBetween() {
+	public String getBusBetween() {
 		return busBetween;
 	}
 	public int getBusType() {
@@ -35,7 +35,9 @@ public class BusInfo {
 		return startTime;
 	}
 	
-	
+	public void setBusBetween(String busBetween){
+		this.busBetween=busBetween;
+	}
 	public void setBusType(int busType) {
 		this.busType = busType;
 	}
