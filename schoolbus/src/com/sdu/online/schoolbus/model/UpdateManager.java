@@ -22,8 +22,8 @@ import android.util.Log;
 public class UpdateManager {
 
 	public static final String TAG = UpdateManager.class.getSimpleName(); 
-	private String appUrlStr = "http://sheling.co.de/update_app.xml",
-			dbUrlStr = "http://sheling.co.de/update_db_upgrade.xml";
+	private String appUrlStr = "http://202.194.15.195:8080/schoolbus_update/update_app.xml",
+			dbUrlStr = "http://202.194.15.195:8080/schoolbus_update/update_db.xml";
 	private static String dbFileName = "db.xml",appFileName = "app.xml";
 	private Context context;
 	/**方法为阻塞的。应用线程调用*/

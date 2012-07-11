@@ -44,8 +44,8 @@ public class SchoolBusModel {
 //		}
 		String sql;
 		if(schedule == SUMMER_TIME){
-			sql = "select * from summer_time where bus_type in (0,?) and id in (select id from search_table where from_=? and to_=?)";
-		}else sql = "select * from winter_time where bus_type in (0,?) and id in (select id from search_table where from_=? and to_=?)";
+			sql = "select * from summer_time where bus_type in (0,?) and id in (select id from search_table where from_=? and to_=?) order by start_time";
+		}else sql = "select * from winter_time where bus_type in (0,?) and id in (select id from search_table where from_=? and to_=?) order by start_time";
 		Cursor cursor=sqlDB.rawQuery(sql,new String[]{busType+"",from,to});
 		
 		while(cursor.moveToNext()){
@@ -53,8 +53,8 @@ public class SchoolBusModel {
 			businfo.setStartTime(cursor.getString(cursor.getColumnIndex("start_time")));
 			businfo.setEndTime(cursor.getString(cursor.getColumnIndex("end_time")));
 			businfo.setBusType(cursor.getInt(cursor.getColumnIndex("bus_type")));
-			businfo.setFrom( new Place(from,cursor.getString(cursor.getColumnIndex("from_desc"))));
-			businfo.setTo( new Place(to,cursor.getString(cursor.getColumnIndex("to_desc"))));
+			businfo.setFrom( new Place(cursor.getString(cursor.getColumnIndex("bus_from")),cursor.getString(cursor.getColumnIndex("from_desc"))));
+			businfo.setTo( new Place(cursor.getString(cursor.getColumnIndex("bus_to")),cursor.getString(cursor.getColumnIndex("to_desc"))));
 			businfo.setBusBetween(cursor.getString(cursor.getColumnIndex("bus_between")));
 			buslist.add(businfo);
 		}
