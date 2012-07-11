@@ -56,6 +56,11 @@
             android:theme="@android:style/Theme.Dialog" 
             android:label="@string/update_title"
             ></activity>
+        <activity
+            android:name=".About"
+            android:label="@string/about"
+            android:theme="@android:style/Theme.Black"
+            />
 		<service
 		    android:name=".UpdateService" 
 		    >
