@@ -16,6 +16,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.sdu.online.schoolbus.R;
+import com.sdu.online.schoolbus.sql.DataBaseHelper;
 import com.sdu.online.schoolbus.util.FileUtils;
 
 
@@ -31,8 +32,10 @@ public class SplashActivity extends Activity {
 		String storagepath=Environment.getExternalStorageDirectory().toString()+File.separator+"schoolbus";
 		try {
 			File file=this.getDatabasePath(DATABASE_FILE_NAME);
+			if(!file.exists()){
+				Log.v("ddddd", "file not exisist!");
 			FileUtils.copyfile(this.getAssets().open(DATABASE_FILE_NAME),file, true);
-			
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -68,7 +68,8 @@ public final class R {
         public static final int search_button=0x7f02000b;
         public static final int settings_button=0x7f02000c;
         public static final int splash=0x7f02000d;
-        public static final int switcher_text=0x7f02000e;
+        public static final int splash_bg=0x7f02000e;
+        public static final int switcher_text=0x7f02000f;
     }
     public static final class id {
         public static final int bus_list_cell_entry=0x7f0b0009;

@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
+import android.util.Log;
 
 public class DataBaseHelper extends SQLiteOpenHelper{
 	public static final String DATABASE_FILE_NAME = "bus.db";
@@ -27,14 +28,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
-		try {
-			File file=context.getDatabasePath(DATABASE_FILE_NAME);
-			FileUtils.copyfile(context.getAssets().open(DATABASE_FILE_NAME),file, true);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Log.v("fuck you!", "update db");
+	
 	}
 
 	@Override

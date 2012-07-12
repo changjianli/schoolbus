@@ -52,7 +52,7 @@ public class FileUtils {
 			java.io.FileOutputStream fosto = new FileOutputStream(toFile);
 			byte bt[] = new byte[1024];
 			int c;
-			while ((c = inputstream.read(bt)) > 0) {
+			while ((c = inputstream.read(bt))!=-1) {
 				fosto.write(bt, 0, c); //将内容写到新文件当中
 			}
 			inputstream.close();
