@@ -36,6 +36,11 @@
          <item>马家庄\n</item>
          <item>舜玉\n小区</item>
          <item>燕山\n宿舍</item>
+         <item>阳光\n舜城</item>
+         <item>二宿舍\n</item>
+         <item>燕山\n立交北</item>
+         <item>文化路\n</item>
+         <item>社会\n科学院</item>
      </string-array>
 
      
@@ -52,6 +57,12 @@
      <string name="start_palce_ma">马家庄\n</string>
      <string name="start_palce_shun">舜玉\n小区</string>
      <string name="start_palce_yan">燕山\n宿舍</string>
+     
+     <string name="start_palce_yang">阳光\n舜城</string>
+     <string name="start_palce_er">二宿舍\n</string>
+     <string name="start_palce_li">燕山\n立交北</string>
+     <string name="start_palce_wen">文化路\n</string>
+     <string name="start_palce_she">社会\n科学院</string>
      
      <string name="schedule_tip_summer">[夏季时刻表]</string>
      <string name="schedule_tip_winter">[冬季时刻表]</string>

@@ -33,7 +33,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 	
 	@Override
 	public int getCount() {
-		return 2;
+		return 3;
 	}
 
 	@Override
@@ -43,15 +43,15 @@ public class ViewPagerAdapter extends PagerAdapter {
 
 	@Override
 	public void destroyItem(View container, int position, Object object) {
-		((ViewPager)container).removeViewAt(0);
+		((ViewPager)container).removeView(views.get(position));
 	}
 
 	@Override
 	public Object instantiateItem(View container, int position) {
 		ViewHolder holder;
-		View v;
+//		View v;
 //		if(container == null){
-			v = mInflater.inflate(R.layout.select_from_pager, null);
+//			v = mInflater.inflate(R.layout.select_from_pager, null);
 			holder = new ViewHolder();
 			holder.tv1 = (TextView) views.get(position).findViewById(R.id.select_from_tv1);
 			holder.tv2 = (TextView) views.get(position).findViewById(R.id.select_from_tv2);
@@ -86,6 +86,16 @@ public class ViewPagerAdapter extends PagerAdapter {
 			holder.tv5.setText(R.string.start_palce_yan);
 			holder.tv6.setText(R.string.start_palce_shun);
 			Log.d(TAG, "position 1");
+			break;
+		case 2:
+			holder.tv1.setText(R.string.start_palce_yang);
+			holder.tv2.setText(R.string.start_palce_er);
+			holder.tv3.setText(R.string.start_palce_li);
+			holder.tv4.setText(R.string.start_palce_wen);
+			holder.tv5.setText(R.string.start_palce_she);
+			holder.tv6.setVisibility(View.GONE);
+//			holder.tv6.setText(R.string.start_palce_he);
+			Log.d(TAG, "position 2");
 			break;
 		}
 		

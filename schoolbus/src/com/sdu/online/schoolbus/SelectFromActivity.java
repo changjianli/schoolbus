@@ -19,6 +19,7 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
@@ -26,10 +27,13 @@ import android.widget.TableLayout;
 public class SelectFromActivity extends Activity {
 	ViewPager pager;
 	ImageView iv1 = null;
-	ImageView iv2 = null; 
+	ImageView iv2 = null,iv3 = null; 
 	ImageView settingsView ;
 	SharedPreferences sp;
+	int page = 0;
 	RelativeLayout topLayout;
+	
+	private static final String TAG = SelectFromActivity.class.getSimpleName();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +49,23 @@ public class SelectFromActivity extends Activity {
 	protected void onResume() {
 		topLayout.setBackgroundResource(sp.getInt("color_theme", R.color.main_color_blue));
 		setListeners();
+		pager.setCurrentItem(page);
 		super.onResume();
+	}
+
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		super.onRestoreInstanceState(savedInstanceState);
+		page = savedInstanceState.getInt("page");
+		pager.setCurrentItem(page);
+		Log.d(TAG, "restore..."+page);
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putInt("page", page);
+		Log.d(TAG, "save..."+page);
 	}
 
 
@@ -54,6 +74,7 @@ public class SelectFromActivity extends Activity {
 		pager = (ViewPager) findViewById(R.id.select_from_layout_viewpager);
 		iv1 = (ImageView) findViewById(R.id.select_from_layout_iv1);
 		iv2 = (ImageView) findViewById(R.id.select_from_layout_iv2);
+		iv3 = (ImageView) findViewById(R.id.select_from_layout_iv3);
 		settingsView = (ImageView)findViewById(R.id.settings);
 		topLayout = (RelativeLayout)findViewById(R.id.select_from_layout_top);
 		
@@ -61,6 +82,7 @@ public class SelectFromActivity extends Activity {
 	
 	private void setListeners(){
 		ArrayList<View> mListViews = new ArrayList<View>();
+		mListViews.add(getLayoutInflater().inflate(R.layout.select_from_pager, null));
 		mListViews.add(getLayoutInflater().inflate(R.layout.select_from_pager, null));
 		mListViews.add(getLayoutInflater().inflate(R.layout.select_from_pager, null));
 		
@@ -81,10 +103,20 @@ public class SelectFromActivity extends Activity {
 				case 0:
 					iv1.setImageResource(R.drawable.point_selected);
 					iv2.setImageResource(R.drawable.point_normal);
+					iv3.setImageResource(R.drawable.point_normal);
+					page = 0;
 					break;
 				case 1:
 					iv1.setImageResource(R.drawable.point_normal);
 					iv2.setImageResource(R.drawable.point_selected);
+					iv3.setImageResource(R.drawable.point_normal);
+					page = 1;
+					break;
+				case 2:
+					iv1.setImageResource(R.drawable.point_normal);
+					iv2.setImageResource(R.drawable.point_normal);
+					iv3.setImageResource(R.drawable.point_selected);
+					page = 2;
 					break;
 				}
 			}

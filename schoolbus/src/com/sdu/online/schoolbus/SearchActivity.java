@@ -59,8 +59,7 @@ public class SearchActivity extends Activity {
 		case 1:
 			if(resultCode == RESULT_OK){
 				String rawEnd= data.getStringExtra("end");
-				String endArr[] = rawEnd.split("\n");
-				end = endArr.length==1||endArr[1]==null||endArr[1].equals("") ? endArr[0] : endArr[0] + endArr[1];
+				end = rawEnd.replaceAll("\n", ""); 
 				chooseDes.setText(rawEnd);
 			}
 			break;
@@ -89,8 +88,7 @@ public class SearchActivity extends Activity {
 	private void init(){
 		Intent intent = getIntent();
 		rawStart = intent.getStringExtra("start");
-		String result[] = rawStart.split("\n");
-		start = result.length==1||result[1]==null||result[1].equals("") ? result[0] : result[0]+result[1];
+		start = rawStart.replaceAll("\n", "");
 		//确定工作日非工作日
 		Date date = new Date();
 		int day = date.getDay();
