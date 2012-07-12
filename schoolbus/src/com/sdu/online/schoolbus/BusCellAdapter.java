@@ -27,6 +27,7 @@ public class BusCellAdapter extends BaseAdapter {
 	private static final String TAG = BusCellAdapter.class.getSimpleName();
 	private ViewHolder clickedHolder;
 	private ListView listView;
+	private int selected = -1;
 	
 	public BusCellAdapter(Context context,List<BusInfo> busInfo,ListView listView){
 		this.context = context;
@@ -78,17 +79,28 @@ public class BusCellAdapter extends BaseAdapter {
 		String betweenBuses = busInfo.get(position).getBusBetween();
 		holder.detailBetweenPlace.setText(betweenBuses);
 		
+		if(selected != position)	holder.layout.setVisibility(View.GONE);
+		else if(selected != -1)	holder.layout.setVisibility(View.VISIBLE);
+		
 		final int p = position;
 		final BusInfo bus = busInfo.get(position);
 		holder.title.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				listView.setSelection(p);
+//				listView.setSelection(p);
+				Log.d(TAG, "clicked: "+p);
 				Log.d(TAG, bus.toString());
 				if(clickedHolder != null && clickedHolder != holder){
 					clickedHolder.layout.setVisibility(View.GONE);
+					Log.d(TAG, "some holder gone");
 				}
-				if(holder.layout.getVisibility() != View.VISIBLE)	holder.layout.setVisibility(View.VISIBLE);
-				else holder.layout.setVisibility(View.GONE);
+				if(holder.layout.getVisibility() != View.VISIBLE){	
+					holder.layout.setVisibility(View.VISIBLE); 
+					selected = p;Log.d(TAG, " the holder layout visiable");
+				}else {
+					holder.layout.setVisibility(View.GONE); 
+					Log.d(TAG, "the holder layout gone");
+					selected = -1;
+				}
 				clickedHolder = holder;
 			}
 		});
