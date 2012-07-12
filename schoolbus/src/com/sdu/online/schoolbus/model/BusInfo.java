@@ -1,7 +1,7 @@
 package com.sdu.online.schoolbus.model;
 import java.util.ArrayList;
 
-public class BusInfo {
+public class BusInfo implements Comparable<BusInfo>{
 	
 	public static final int BUS_TYPE_EVERYDAY=0;
 	public static final int BUS_TYPE_WEEKDAY=1;
@@ -80,6 +80,16 @@ public class BusInfo {
 				+ ", busType=" + busType + ", remark=" + remark
 				+ ", busBetween=" + busBetween 
 				+ "]";
+	}
+	public int compareTo(BusInfo another) {
+		String arr[]= this.getStartTime().split(":");
+		int aHour,aMinute,bHour,bMinute;
+		aHour = Integer.parseInt(arr[0]);
+		aMinute = Integer.parseInt(arr[1]);
+		arr = another.getStartTime().split(":");
+		bHour = Integer.parseInt(arr[0]);
+		bMinute = Integer.parseInt(arr[1]);
+		return aHour != bHour ? aHour -bHour : aMinute -bMinute;
 	}
 	
 }

@@ -2,6 +2,7 @@ package com.sdu.online.schoolbus.model;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -44,8 +45,8 @@ public class SchoolBusModel {
 //		}
 		String sql;
 		if(schedule == SUMMER_TIME){
-			sql = "select * from summer_time where bus_type in (0,?) and id in (select id from search_table where from_=? and to_=?) order by start_time";
-		}else sql = "select * from winter_time where bus_type in (0,?) and id in (select id from search_table where from_=? and to_=?) order by start_time";
+			sql = "select * from summer_time where bus_type in (0,?) and id in (select id from search_table where from_=? and to_=?)";
+		}else sql = "select * from winter_time where bus_type in (0,?) and id in (select id from search_table where from_=? and to_=?)";
 		Cursor cursor=sqlDB.rawQuery(sql,new String[]{busType+"",from,to});
 		
 		while(cursor.moveToNext()){
@@ -60,6 +61,7 @@ public class SchoolBusModel {
 		}
 		cursor.deactivate();
 		sqlDB.close();
+		Collections.sort(buslist);
 		return buslist;
 	}
 	
