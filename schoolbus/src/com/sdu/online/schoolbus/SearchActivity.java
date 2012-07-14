@@ -90,8 +90,7 @@ public class SearchActivity extends Activity {
 		rawStart = intent.getStringExtra("start");
 		start = rawStart.replaceAll("\n", "");
 		//确定工作日非工作日
-		Date date = new Date();
-		int day = date.getDay();
+		int day=Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
 		if(day == Calendar.SUNDAY || day == Calendar.SATURDAY){
 			weekDay = SchoolBusModel.NO_WEEK_DAY;
 			isWeekDay.setText(getResources().getString(R.string.time_nowork));
