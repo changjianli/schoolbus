@@ -109,7 +109,9 @@
         android:id="@+id/search_layout_list_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" 
-        android:padding="@dimen/padding_xlarge"
+        android:paddingRight="@dimen/padding_medium"
+        android:paddingLeft="@dimen/padding_medium"
+        android:paddingBottom="@dimen/padding_large"
         >
         <ListView
             android:id="@+id/search_layout_listview"
@@ -118,7 +120,20 @@
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
             android:scrollbars="vertical" 
+            android:paddingTop="@dimen/padding_large"
+            android:visibility="gone"
             />
+        <ScrollView
+            android:id="@+id/search_sv_des_all"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:paddingTop="@dimen/padding_medium"
+            android:background="@drawable/bg_des"
+            android:visibility="gone"
+            >
+        
+            </ScrollView>
         <LinearLayout
             android:id="@+id/search_layout_no_found_layout"
             android:layout_height="fill_parent"

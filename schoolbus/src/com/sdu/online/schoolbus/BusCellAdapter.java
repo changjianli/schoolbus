@@ -86,7 +86,7 @@ public class BusCellAdapter extends BaseAdapter {
 		final BusInfo bus = busInfo.get(position);
 		holder.title.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-//				listView.setSelection(p);
+				listView.setSelection(p);
 				Log.d(TAG, "clicked: "+p);
 				Log.d(TAG, bus.toString());
 				if(clickedHolder != null && clickedHolder != holder){

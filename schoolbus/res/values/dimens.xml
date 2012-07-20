@@ -26,4 +26,9 @@
 	
 	<dimen name="list_view_padding">10dp</dimen>
 	
+	<!-- popwindow的宽度：cell_width*3+padding_medium*6
+		popwindow 高度：
+	 -->
+	<dimen name="popwindow_width">288dp</dimen>
+	<dimen name="popwindow_height">320dp</dimen>
 </resources>
