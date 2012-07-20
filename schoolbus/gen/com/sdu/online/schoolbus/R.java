@@ -75,12 +75,11 @@ public final class R {
         public static final int ic_place_tip=0x7f020008;
         public static final int ic_search_01=0x7f020009;
         public static final int ic_settings=0x7f02000a;
-        public static final int more=0x7f02000b;
-        public static final int no_found=0x7f02000c;
-        public static final int point_normal=0x7f02000d;
-        public static final int point_selected=0x7f02000e;
-        public static final int splash=0x7f02000f;
-        public static final int switcher_text=0x7f020010;
+        public static final int no_found=0x7f02000b;
+        public static final int point_normal=0x7f02000c;
+        public static final int point_selected=0x7f02000d;
+        public static final int splash=0x7f02000e;
+        public static final int switcher_text=0x7f02000f;
     }
     public static final class id {
         public static final int bus_list_cell_entry=0x7f0c0000;
