@@ -100,14 +100,14 @@ public class ViewPagerAdapter extends PagerAdapter {
 		}
 		
 		//TODO 皮肤相关
-		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-		int color = sp.getInt("color_theme", R.color.main_color_blue);
-		holder.tv1.setBackgroundResource(color);
-		holder.tv2.setBackgroundResource(color);
-		holder.tv3.setBackgroundResource(color);
-		holder.tv4.setBackgroundResource(color);
-		holder.tv5.setBackgroundResource(color);
-		holder.tv6.setBackgroundResource(color);
+//		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+//		int color = sp.getInt("color_theme", R.color.main_color_blue);
+//		holder.tv1.setBackgroundResource(color);
+//		holder.tv2.setBackgroundResource(color);
+//		holder.tv3.setBackgroundResource(color);
+//		holder.tv4.setBackgroundResource(color);
+//		holder.tv5.setBackgroundResource(color);
+//		holder.tv6.setBackgroundResource(color);
 		
 		LayoutParams params = new LayoutParams();
 		params.height = LayoutParams.FILL_PARENT;

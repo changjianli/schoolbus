@@ -1,6 +1,8 @@
 <resources>
 
     <string name="app_name">校车查询</string>
+    <string name="org_name">ONLINE</string>
+    <string name="place_tip">您的位置：</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">设置</string>
     <string name="title_activity_main">MainActivity</string>
@@ -66,7 +68,7 @@
      
      <string name="schedule_tip_summer">[夏季时刻表]</string>
      <string name="schedule_tip_winter">[冬季时刻表]</string>
-     <string name="choose_des_tip">选择\n目的地</string>
+     <string name="choose_des_tip">目的地</string>
      
      <string name="detail_start_time">发车时间</string>
      <string name="detail_start_place">发车地点</string>

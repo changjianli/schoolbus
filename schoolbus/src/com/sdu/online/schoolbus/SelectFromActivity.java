@@ -47,7 +47,7 @@ public class SelectFromActivity extends Activity {
 	
 	@Override
 	protected void onResume() {
-		topLayout.setBackgroundResource(sp.getInt("color_theme", R.color.main_color_blue));
+//		topLayout.setBackgroundResource(sp.getInt("color_theme", R.color.main_color_blue));
 		setListeners();
 		pager.setCurrentItem(page);
 		super.onResume();

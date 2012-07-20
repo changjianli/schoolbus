@@ -106,11 +106,11 @@ public class BusCellAdapter extends BaseAdapter {
 		});
 		
 		//TODO 换肤相关
-		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-		int color = sp.getInt("color_theme", R.color.main_color_blue);
-		holder.title.setBackgroundResource(color);
-		color = sp.getInt("color_theme_alpha", R.color.main_color_blue_alpha);
-		holder.layout.setBackgroundResource(color);
+//		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+//		int color = sp.getInt("color_theme", R.color.main_color_blue);
+//		holder.title.setBackgroundResource(color);
+//		color = sp.getInt("color_theme_alpha", R.color.main_color_blue_alpha);
+//		holder.layout.setBackgroundResource(color);
 		return convertView;
 	}
 	

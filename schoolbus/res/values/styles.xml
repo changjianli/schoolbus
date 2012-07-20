@@ -15,7 +15,7 @@
 	  <!-- 指定分割线颜色 -->
 	  <item name="android:divider">#00000000</item>
 	  <!-- 指定分割线高度 -->
-	  <item name="android:dividerHeight">20dp</item>
+	  <item name="android:dividerHeight">15dp</item>
 	  <!-- 设置listSelector的颜色在数据的下面 -->
 	  <item name="android:drawSelectorOnTop">false</item>
 	  <!-- 设置点击选中颜色 -->
@@ -23,7 +23,6 @@
 	  <!-- 设置ListView默认背景色 -->
 	  <item name="android:background">#00000000</item>
 	  <!-- 设置ListView距左边距距离 -->
-	
 	  
     </style>
 </resources>

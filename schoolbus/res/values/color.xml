@@ -4,9 +4,9 @@
     <color name="main_color_text_theme_red">#9C0C15</color>
     <color name="main_color_red_alpha">#AA9C0C15</color>
     
-    <color name="main_color_blue">#cc3570E8</color>
+    <color name="main_color_blue">#cd4c838a</color>
     <color name="main_color_text_theme_blue">#3570E8</color>
-    <color name="main_color_blue_alpha">#443570E8</color>
+    <color name="main_color_blue_alpha">#cd98bec5</color>
     
     <color name="main_color_green">#cc33A22C</color>
     <color name="main_color_text_theme_green">#cc33C82C</color>
@@ -17,8 +17,8 @@
     <color name="main_color_purple_alpha">#665830E8</color>
     
     <color name="main_color_light">#ffffff</color>
-    <color name="main_color_alpha">#44ffffff</color>
-    <color name="main_color_dark">#ffffff</color>
+    <color name="main_color_alpha">#77ffffff</color>
+    <color name="main_color_dark">#000000</color>
     
     <!-- 99D9EA   #5692CD #cc5830E8诱惑紫  	#cc3570E8   深邃蓝   #cc9C0C15 山大红  #cc33C82C 青草绿-->
 </resources>
