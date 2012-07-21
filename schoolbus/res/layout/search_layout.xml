@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_01"
-    android:orientation="vertical" >
+    android:background="@drawable/bg_01" >
+    
     <RelativeLayout
         android:id="@+id/select_from_layout_top"
         android:layout_width="fill_parent"
+        
+        android:layout_alignParentTop="true"
+        
         android:layout_height="40dp" 
         android:background="@drawable/bg_title_01"
         >
@@ -36,6 +39,8 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="center"
+        
+        android:layout_below="@id/select_from_layout_top"
         >
     <LinearLayout
         android:id="@+id/search_layout_top"
@@ -105,13 +110,45 @@
         
     </LinearLayout>
 	</LinearLayout>
-	    <RelativeLayout
+	
+    <RelativeLayout
+        android:id="@+id/select_from_layout_bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp" 
+        android:background="@drawable/bg_bottom_01"
+        >
+        
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/org_name"
+            android:textAppearance="@android:style/TextAppearance.Large"
+             
+            />
+        
+        <ImageView
+            android:id="@+id/settings"
+            android:layout_height="40dp"
+            android:layout_width="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="5dp"
+            android:padding="3dp"
+            android:src="@drawable/ic_settings" 
+            />
+    </RelativeLayout>
+        <RelativeLayout
         android:id="@+id/search_layout_list_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" 
         android:paddingRight="@dimen/padding_medium"
         android:paddingLeft="@dimen/padding_medium"
         android:paddingBottom="@dimen/padding_large"
+        
+        android:layout_above="@id/select_from_layout_bottom"
+        android:layout_below="@id/search_layout_wrapper"
         >
         <ListView
             android:id="@+id/search_layout_listview"
@@ -159,4 +196,4 @@
     </RelativeLayout>
 
     
-</LinearLayout>
+</RelativeLayout>
