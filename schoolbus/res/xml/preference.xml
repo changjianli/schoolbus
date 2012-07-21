@@ -5,7 +5,7 @@
     <PreferenceCategory android:title="个性设置">
         <Preference
             android:title="主题设置"
-            android:key="color_theme"
+            android:key="theme"
             android:summary="当前主题:深邃蓝" 
             />
     </PreferenceCategory>

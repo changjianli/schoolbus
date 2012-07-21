@@ -71,12 +71,10 @@ public class SplashActivity extends Activity {
 		}if(sp.getString("db_version", null) == null){
 			editor.putString("db_version", "20120707");
 		}
-		//初始颜色设置
-//		if(sp.getInt("color_theme", 0) == 0){
-//			editor.putInt("color_theme", R.color.main_color_blue);
-//			editor.putInt("background", R.drawable.bg_01);
-//			editor.putInt("color_theme_alpha", R.color.main_color_blue_alpha);
-//		}
+		//初始主题设置，默认主题1
+		if(sp.getInt("theme", 0) == 0){
+			editor.putInt("theme", 1);
+		}
 		editor.commit();
 		if(sp.getBoolean("auto_update", true)){
 			Intent intent = new Intent();

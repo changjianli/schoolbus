@@ -1,11 +1,9 @@
 package com.sdu.online.schoolbus;
 
 import java.util.List;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -14,7 +12,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class ViewPagerAdapter extends PagerAdapter {
@@ -49,9 +46,6 @@ public class ViewPagerAdapter extends PagerAdapter {
 	@Override
 	public Object instantiateItem(View container, int position) {
 		ViewHolder holder;
-//		View v;
-//		if(container == null){
-//			v = mInflater.inflate(R.layout.select_from_pager, null);
 			holder = new ViewHolder();
 			holder.tv1 = (TextView) views.get(position).findViewById(R.id.select_from_tv1);
 			holder.tv2 = (TextView) views.get(position).findViewById(R.id.select_from_tv2);
@@ -65,9 +59,6 @@ public class ViewPagerAdapter extends PagerAdapter {
 			setListener(holder.tv4);
 			setListener(holder.tv5);
 			setListener(holder.tv6);
-//			container.setTag(holder);
-//		}else
-//			holder = (ViewHolder) container.getTag();
 		switch(position){
 		case 0:
 			holder.tv1.setText(R.string.start_palce_xing);
@@ -100,20 +91,31 @@ public class ViewPagerAdapter extends PagerAdapter {
 		}
 		
 		//TODO 皮肤相关
-//		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-//		int color = sp.getInt("color_theme", R.color.main_color_blue);
-//		holder.tv1.setBackgroundResource(color);
-//		holder.tv2.setBackgroundResource(color);
-//		holder.tv3.setBackgroundResource(color);
-//		holder.tv4.setBackgroundResource(color);
-//		holder.tv5.setBackgroundResource(color);
-//		holder.tv6.setBackgroundResource(color);
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+		int theme = sp.getInt("theme",1);
+		switch(theme){
+		case 1:
+			setBackground(R.drawable.btn_bg_01,holder.tv1,holder.tv2,holder.tv3,holder.tv4,holder.tv5,holder.tv6);
+			break;
+		case 2:
+			setBackground(R.drawable.btn_bg_02,holder.tv1,holder.tv2,holder.tv3,holder.tv4,holder.tv5,holder.tv6);
+			break;
+		case 3:
+			setBackground(R.drawable.btn_bg_03,holder.tv1,holder.tv2,holder.tv3,holder.tv4,holder.tv5,holder.tv6);
+			break;
+		}
 		
 		LayoutParams params = new LayoutParams();
 		params.height = LayoutParams.FILL_PARENT;
 		params.width = LayoutParams.FILL_PARENT;
 		((ViewPager)container).addView(views.get(position), 0,params);
 		return views.get(position);
+	}
+	
+	private void setBackground(int resid,TextView...views){
+		for(TextView v: views){
+			v.setBackgroundResource(resid);
+		}
 	}
 	
 	private void setListener(final View view){

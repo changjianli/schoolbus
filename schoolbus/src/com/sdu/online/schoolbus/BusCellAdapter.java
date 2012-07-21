@@ -2,8 +2,6 @@ package com.sdu.online.schoolbus;
 
 import java.util.List;
 import com.sdu.online.schoolbus.model.BusInfo;
-import com.sdu.online.schoolbus.model.Place;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -13,15 +11,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 
 public class BusCellAdapter extends BaseAdapter {
-
-	private Context context;
 	private List<BusInfo> busInfo;
 	private LayoutInflater mInflater;
 	private static final String TAG = BusCellAdapter.class.getSimpleName();
@@ -29,11 +24,29 @@ public class BusCellAdapter extends BaseAdapter {
 	private ListView listView;
 	private int selected = -1;
 	
+	private int resid,color;
 	public BusCellAdapter(Context context,List<BusInfo> busInfo,ListView listView){
-		this.context = context;
 		this.busInfo = busInfo;
 		mInflater = LayoutInflater.from(context);
 		this.listView = listView;
+		
+		//初始化背景资源信息
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+		int theme = sp.getInt("theme", 1);
+		switch(theme){
+		case 1:
+			resid = R.drawable.btn_bg_01;
+			color = R.color.main_color_01_alpha;
+			break;
+		case 2:
+			resid = R.drawable.btn_bg_02;
+			color = R.color.main_color_02_alpha;
+			break;
+		case 3:
+			resid = R.drawable.btn_bg_03;
+			color = R.color.main_color_03_alpha;
+			break;
+		}
 	}
 	
 	public int getCount() {
@@ -105,12 +118,8 @@ public class BusCellAdapter extends BaseAdapter {
 			}
 		});
 		
-		//TODO 换肤相关
-//		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-//		int color = sp.getInt("color_theme", R.color.main_color_blue);
-//		holder.title.setBackgroundResource(color);
-//		color = sp.getInt("color_theme_alpha", R.color.main_color_blue_alpha);
-//		holder.layout.setBackgroundResource(color);
+		holder.title.setBackgroundResource(resid);
+		holder.layout.setBackgroundResource(color);
 		return convertView;
 	}
 	

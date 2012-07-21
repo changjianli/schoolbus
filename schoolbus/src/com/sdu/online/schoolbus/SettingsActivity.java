@@ -36,6 +36,7 @@ import com.sdu.online.schoolbus.util.DialogUtils;
 
 public class SettingsActivity extends PreferenceActivity {
 
+	
 	private CheckBoxPreference autoUpdate,autoUpdateWifi;
 	private Preference appVersion,dbVersion,colorTheme;
 	//等待对话框
@@ -89,10 +90,6 @@ public class SettingsActivity extends PreferenceActivity {
 		findKeys();
 		listen();
 	}
-	
-	
-
-
 
 	@Override
 	protected void onResume() {
@@ -106,7 +103,7 @@ public class SettingsActivity extends PreferenceActivity {
 		autoUpdateWifi = (CheckBoxPreference) findPreference("update_only_wifi");
 		appVersion = findPreference("update_app");
 		dbVersion = findPreference("update_db");
-		colorTheme = findPreference("color_theme");
+		colorTheme = findPreference("theme");
 	}
 	
 	private void init(){
@@ -126,18 +123,15 @@ public class SettingsActivity extends PreferenceActivity {
 	private void colorThemeChanaged(){
 		SharedPreferences sps = PreferenceManager.getDefaultSharedPreferences(this);
 		String text = "当前主题: ";
-		switch(sps.getInt("color_theme", R.color.main_color_blue)){
-		case R.color.main_color_blue:
-			text +="深邃蓝";
+		switch(sps.getInt("theme", 1)){
+		case 1:
+			text += "01";
 			break;
-		case R.color.main_color_purple:
-			text += "诱惑紫";
+		case 2:
+			text += "02";
 			break;
-		case R.color.main_color_green:
-			text += "自然绿";
-			break;
-		case R.color.main_color_red:
-			text += "山大红";
+		case 3:
+			text += "03";
 			break;
 		}
 		colorTheme.setSummary(text);
@@ -162,48 +156,15 @@ public class SettingsActivity extends PreferenceActivity {
 			if(checkNetWorkState())	showUpdateDialogDB();
 		}else if(preference.getKey().equals("update_app")){
 			if(checkNetWorkState())	showUpdateDialogApp();
-		}else if(preference.getKey().equals("color_theme")){
+		}else if(preference.getKey().equals("theme")){
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			String[] items = {"深邃蓝","诱惑紫","自然绿","山大红"};
+			String[] items = {"01","02","03"};
 			SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-			int selected= 0;
-			switch(sp.getInt("color_theme", R.color.main_color_blue)){
-			case R.color.main_color_blue:
-				break;
-			case R.color.main_color_purple:
-				selected = 1;
-				break;
-			case R.color.main_color_green:
-				selected = 2;
-				break;
-			case R.color.main_color_red:
-				selected = 3;
-				break;
-			}
+			int selected= sp.getInt("theme", 1) -1;
 			final Editor editor = sp.edit();
 			builder.setSingleChoiceItems(items, selected, new AlertDialog.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
-					int value1 = 0,value2 = 0;
-					switch(which){
-					case 0:
-						value1 = R.color.main_color_blue;
-						value2 = R.color.main_color_blue_alpha;
-						break;
-					case 1:
-						value1 = R.color.main_color_purple;
-						value2 = R.color.main_color_purple_alpha;
-						break;
-					case 2:
-						value1 = R.color.main_color_green;
-						value2 = R.color.main_color_green_alpha;
-						break;
-					case 3:
-						value1 = R.color.main_color_red;
-						value2 = R.color.main_color_red_alpha;
-						break;
-					}
-					editor.putInt("color_theme", value1);
-					editor.putInt("color_theme_alpha", value2);
+					editor.putInt("theme", which+1);
 					editor.commit();
 					dialog.dismiss();
 					colorThemeChanaged();

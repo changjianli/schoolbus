@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/select_layout_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_01"
@@ -46,7 +47,7 @@
             android:layout_height="30dp"
             android:layout_width="30dp"
             android:layout_marginRight="5dp"
-            android:src="@drawable/ic_place_tip" 
+            android:src="@drawable/ic_place_tip_01" 
             />
         <TextView
             android:layout_height="wrap_content"
@@ -102,7 +103,7 @@
 	        android:layout_height="15dp"
 	        android:layout_width="15dp"
 	        android:layout_centerInParent="true" 
-	        android:src="@drawable/point_normal"
+	        android:src="@drawable/point_normal_01"
 	        />	        
 	    <ImageView
 	        android:id="@+id/select_from_layout_iv1"
@@ -110,7 +111,7 @@
 	        android:layout_centerVertical="true"
 	        android:layout_height="15dp"
 	        android:layout_width="15dp" 
-	        android:src="@drawable/point_selected"
+	        android:src="@drawable/point_selected_01"
 	        />
 	    <ImageView
 	        android:id="@+id/select_from_layout_iv3"
@@ -118,7 +119,7 @@
 	        android:layout_centerVertical="true"
 	        android:layout_height="15dp"
 	        android:layout_width="15dp" 
-	        android:src="@drawable/point_normal"
+	        android:src="@drawable/point_normal_01"
 	        />
 	    
 	    
