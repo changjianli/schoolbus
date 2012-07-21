@@ -1,19 +1,6 @@
 package com.sdu.online.schoolbus;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.SocketTimeoutException;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
-
 import com.sdu.online.schoolbus.model.UpdateManager;
-import com.sdu.online.schoolbus.util.DialogUtils;
-import com.sdu.online.schoolbus.util.DownloadUtils;
-
-import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -24,9 +11,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -36,11 +21,9 @@ public class UpdateService extends Service {
 	public static final int TYPE_APP = 1,TYPE_DB=2,TYPE_ALL = 3;
 	private static final String TAG = UpdateService.class.getSimpleName();
 	
-	private boolean autoUpdate,autoUpdateWifi;
+	private boolean autoUpdateWifi;
 	private NetworkInfo ni;
 	private State wifi;
-	private int type;
-	private boolean needNoUpdateWarn = false;
 	
 	@Override
 	public IBinder onBind(Intent arg0) {
@@ -70,7 +53,6 @@ public class UpdateService extends Service {
 	
 	private void init(){
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-		autoUpdate = sp.getBoolean("auto_update", true);
 		autoUpdateWifi = sp.getBoolean("update_only_wifi", false);
 		ConnectivityManager cm=(ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
 		wifi=cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState();

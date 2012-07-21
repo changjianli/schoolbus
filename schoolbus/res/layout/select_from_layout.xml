@@ -24,7 +24,7 @@
             />
         
         <ImageView
-            android:id="@+id/change_bg_iv"
+            android:id="@+id/change_theme_iv"
             android:layout_height="40dp"
             android:layout_width="40dp"
             android:layout_alignParentRight="true"

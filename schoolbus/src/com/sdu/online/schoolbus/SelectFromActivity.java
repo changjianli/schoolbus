@@ -4,26 +4,19 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TableLayout;
 
 public class SelectFromActivity extends Activity {
 	ViewPager pager;
-	ImageView iv1 = null,iv2 = null,iv3 = null,settingsView,placeTip;
+	ImageView iv1 = null,iv2 = null,iv3 = null,settingsView,themeView,placeTip;
 	SharedPreferences sp;
 	int page = 0;
 	RelativeLayout topLayout,bottomLayout,mainLayout;
@@ -39,8 +32,6 @@ public class SelectFromActivity extends Activity {
 		findViews();
 		sp = PreferenceManager.getDefaultSharedPreferences(this);
 	}
-	
-	
 	
 	@Override
 	protected void onResume() {
@@ -67,8 +58,6 @@ public class SelectFromActivity extends Activity {
 		Log.d(TAG, "save..."+page);
 	}
 
-
-
 	private void findViews(){
 		pager = (ViewPager) findViewById(R.id.select_from_layout_viewpager);
 		iv1 = (ImageView) findViewById(R.id.select_from_layout_iv1);
@@ -79,6 +68,7 @@ public class SelectFromActivity extends Activity {
 		bottomLayout = (RelativeLayout)findViewById(R.id.select_from_layout_bottom);
 		mainLayout = (RelativeLayout)findViewById(R.id.select_layout_main);
 		placeTip = (ImageView)findViewById(R.id.iv_place_tip);
+		themeView = (ImageView)findViewById(R.id.change_theme_iv);
 	}
 	
 	private void setListeners(){
@@ -94,6 +84,15 @@ public class SelectFromActivity extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent();
 				intent.setClass(SelectFromActivity.this, SettingsActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		themeView.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(SelectFromActivity.this, SettingsActivity.class);
+				intent.putExtra("type", 1);
 				startActivity(intent);
 			}
 		});

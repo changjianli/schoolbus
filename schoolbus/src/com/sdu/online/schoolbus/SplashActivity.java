@@ -2,7 +2,6 @@ package com.sdu.online.schoolbus;
 
 import java.io.File;
 import java.io.IOException;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,9 +13,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
-
 import com.sdu.online.schoolbus.R;
-import com.sdu.online.schoolbus.sql.DataBaseHelper;
 import com.sdu.online.schoolbus.util.FileUtils;
 
 

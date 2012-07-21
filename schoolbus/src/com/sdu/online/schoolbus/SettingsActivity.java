@@ -1,14 +1,8 @@
 package com.sdu.online.schoolbus;
 
-import java.net.URI;
-import java.net.URL;
 import java.util.List;
-
-import org.apache.http.protocol.HTTP;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -25,10 +19,8 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.support.v4.content.IntentCompat;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.sdu.online.schoolbus.model.UpdateManager;
 import com.sdu.online.schoolbus.model.UpdateManager.APPUpdateInfo;
 import com.sdu.online.schoolbus.model.UpdateManager.DBUpdateInfo;
@@ -43,6 +35,8 @@ public class SettingsActivity extends PreferenceActivity {
 	private AlertDialog dialog;
 	
 	private static final String TAG = SettingsActivity.class.getSimpleName();
+	//type=0,正常进入,type=1,选择皮肤
+	private int type = 0;
 	//根据下载DB或下载app不同返回信息刷新界面
 	private Handler handler = new Handler(){
 
@@ -86,6 +80,7 @@ public class SettingsActivity extends PreferenceActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getExtra();
 		addPreferencesFromResource(R.xml.preference);
 		findKeys();
 		listen();
@@ -97,6 +92,18 @@ public class SettingsActivity extends PreferenceActivity {
 		super.onResume();
 	}
 
+	/**接受传过来的参数*/
+	private void getExtra(){
+		Intent intent = getIntent();
+		type  = intent.getIntExtra("type", 0);
+		switch(type){
+		case 1:
+			showSelectThemeDialog();
+			break;
+		default:
+			break;
+		}
+	}
 
 	private void findKeys(){
 		autoUpdate = (CheckBoxPreference) findPreference("auto_update");
@@ -157,23 +164,29 @@ public class SettingsActivity extends PreferenceActivity {
 		}else if(preference.getKey().equals("update_app")){
 			if(checkNetWorkState())	showUpdateDialogApp();
 		}else if(preference.getKey().equals("theme")){
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			String[] items = {"01","02","03"};
-			SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-			int selected= sp.getInt("theme", 1) -1;
-			final Editor editor = sp.edit();
-			builder.setSingleChoiceItems(items, selected, new AlertDialog.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					editor.putInt("theme", which+1);
-					editor.commit();
-					dialog.dismiss();
-					colorThemeChanaged();
-				}
-			}).show();
+			showSelectThemeDialog();
 		}
 		listen();
 		return super.onPreferenceTreeClick(preferenceScreen, preference);
-		
+	}
+	
+	/**显示选择主题对话框*/
+	private void showSelectThemeDialog(){
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		String[] items = {"01","02","03"};
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+		int selected= sp.getInt("theme", 1) -1;
+		final Editor editor = sp.edit();
+		builder.setTitle("请选择主题");
+		builder.setSingleChoiceItems(items, selected, new AlertDialog.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				editor.putInt("theme", which+1);
+				editor.commit();
+				dialog.dismiss();
+				colorThemeChanaged();
+				if(type==1) SettingsActivity.this.finish();
+			}
+		}).show();
 	}
 	
 	private boolean checkNetWorkState(){

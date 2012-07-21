@@ -90,7 +90,7 @@ public final class R {
     }
     public static final class id {
         public static final int bus_list_cell_entry=0x7f0c0000;
-        public static final int change_bg_iv=0x7f0c000d;
+        public static final int change_theme_iv=0x7f0c000d;
         public static final int detail_layout=0x7f0c0004;
         public static final int detail_layout_between_place=0x7f0c0007;
         public static final int detail_layout_from_place=0x7f0c0006;
