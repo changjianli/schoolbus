@@ -85,6 +85,7 @@ public class SelectFromActivity extends Activity {
 				Intent intent = new Intent();
 				intent.setClass(SelectFromActivity.this, SettingsActivity.class);
 				startActivity(intent);
+				overridePendingTransition(R.anim.settings_anim_in, R.anim.activity_anim_stay);
 			}
 		});
 		

@@ -92,6 +92,12 @@ public class SettingsActivity extends PreferenceActivity {
 		super.onResume();
 	}
 
+	@Override
+	public void finish() {
+		super.finish();
+		overridePendingTransition(R.anim.activity_anim_stay, R.anim.settings_anim_out);
+	}
+
 	/**接受传过来的参数*/
 	private void getExtra(){
 		Intent intent = getIntent();

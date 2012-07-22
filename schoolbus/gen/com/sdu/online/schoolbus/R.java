@@ -9,8 +9,11 @@ package com.sdu.online.schoolbus;
 
 public final class R {
     public static final class anim {
-        public static final int choose_des_anim_in=0x7f040000;
-        public static final int choose_des_anim_out=0x7f040001;
+        public static final int activity_anim_stay=0x7f040000;
+        public static final int choose_des_anim_in=0x7f040001;
+        public static final int choose_des_anim_out=0x7f040002;
+        public static final int settings_anim_in=0x7f040003;
+        public static final int settings_anim_out=0x7f040004;
     }
     public static final class array {
         public static final int bus_start_array=0x7f090000;
