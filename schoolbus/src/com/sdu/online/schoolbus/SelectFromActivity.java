@@ -2,6 +2,8 @@ package com.sdu.online.schoolbus;
 
 import java.util.ArrayList;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -41,6 +44,25 @@ public class SelectFromActivity extends Activity {
 		pager.setCurrentItem(page);
 		setPointSelected(page);
 		super.onResume();
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if(keyCode == KeyEvent.KEYCODE_BACK){
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage("确定退出?")
+			.setNegativeButton("取消",new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+				}
+			}).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+					SelectFromActivity.this.finish();
+				}
+			}).show();
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 
 	@Override
