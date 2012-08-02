@@ -74,22 +74,21 @@ public final class R {
         public static final int btn_bg_01=0x7f02000a;
         public static final int btn_bg_02=0x7f02000b;
         public static final int btn_bg_03=0x7f02000c;
-        public static final int ic_action_search=0x7f02000d;
-        public static final int ic_changetheme=0x7f02000e;
-        public static final int ic_launcher=0x7f02000f;
-        public static final int ic_place_tip_01=0x7f020010;
-        public static final int ic_place_tip_02=0x7f020011;
-        public static final int ic_place_tip_03=0x7f020012;
-        public static final int ic_search_01=0x7f020013;
-        public static final int ic_settings=0x7f020014;
-        public static final int no_found=0x7f020015;
-        public static final int point_normal_01=0x7f020016;
-        public static final int point_normal_02=0x7f020017;
-        public static final int point_normal_03=0x7f020018;
-        public static final int point_selected_01=0x7f020019;
-        public static final int point_selected_02=0x7f02001a;
-        public static final int point_selected_03=0x7f02001b;
-        public static final int splash=0x7f02001c;
+        public static final int ic_changetheme=0x7f02000d;
+        public static final int ic_launcher=0x7f02000e;
+        public static final int ic_place_tip_01=0x7f02000f;
+        public static final int ic_place_tip_02=0x7f020010;
+        public static final int ic_place_tip_03=0x7f020011;
+        public static final int ic_search_01=0x7f020012;
+        public static final int ic_settings=0x7f020013;
+        public static final int no_found=0x7f020014;
+        public static final int point_normal_01=0x7f020015;
+        public static final int point_normal_02=0x7f020016;
+        public static final int point_normal_03=0x7f020017;
+        public static final int point_selected_01=0x7f020018;
+        public static final int point_selected_02=0x7f020019;
+        public static final int point_selected_03=0x7f02001a;
+        public static final int splash=0x7f02001b;
     }
     public static final class id {
         public static final int bus_list_cell_entry=0x7f0c0000;
