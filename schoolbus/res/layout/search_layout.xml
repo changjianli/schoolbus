@@ -185,8 +185,12 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:src="@drawable/no_found"
+            android:visibility="gone"
             />
         <TextView 
+            android:id="@+id/search_layout_nofound_text"
+            android:background="@drawable/btn_bg_01"
+            android:padding="@dimen/padding_xlarge"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

@@ -31,7 +31,7 @@ import android.widget.Toast;
 
 public class SearchActivity extends Activity {
 
-	private TextView chooseDes ,isWeekDay,schedule,title;
+	private TextView chooseDes ,isWeekDay,schedule,title,noFoundText;
 	private ImageView search,settingsView,themeView;
 	private String start,end,rawStart;
 	private ListView listView;
@@ -102,6 +102,7 @@ public class SearchActivity extends Activity {
 		mainLayout = (RelativeLayout)findViewById(R.id.search_main);
 		settingsView = (ImageView)findViewById(R.id.settings);
 		themeView = (ImageView)findViewById(R.id.change_theme_iv);
+		noFoundText = (TextView)findViewById(R.id.search_layout_nofound_text);
 	}
 	
 	private void init(){
@@ -198,6 +199,7 @@ public class SearchActivity extends Activity {
     	}else{
     		listView.setVisibility(View.GONE);
     		noFoundLayout.setVisibility(View.VISIBLE);
+    		noFoundText.setBackgroundResource(resid);
     	}
     	Log.v(TAG, busInfo.toString());
 	}

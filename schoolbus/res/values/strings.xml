@@ -82,6 +82,6 @@
      <string name="btn_cancle">以后再说</string>
      <string name="btn_download">去下载>></string>
      <string name="update_warn">更新提示</string>
-     <string name="search_no_found">抱歉，亲~~\n真没找到您所需的车次</string>
+     <string name="search_no_found">抱歉，暂无符合查询的车次信息!</string>
 </resources>
 
