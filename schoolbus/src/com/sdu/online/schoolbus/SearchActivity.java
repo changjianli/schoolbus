@@ -1,5 +1,6 @@
 package com.sdu.online.schoolbus;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import com.sdu.online.schoolbus.model.BusInfo;
@@ -44,6 +45,7 @@ public class SearchActivity extends Activity {
 
 	private float cellWidth,cellHeight,fontSize,margin;
 	private String placeArr[];
+	private ArrayList<String> allDesList;
 	
 	/**存储所有可点击的组件的背景资源id*/
 	int resid = 0;
@@ -126,6 +128,9 @@ public class SearchActivity extends Activity {
 		else schedule.setText(getResources().getString(R.string.schedule_tip_winter));
 		schedule.getPaint().setFakeBoldText(true);
 		title.setText("起始地: "+start);
+
+		//得到所有目的地的地址
+		allDesList = model.getAllDesList(this, start);
 		
 		/*添加选择目的地的布局时需要用到的*/
 		cellWidth = getResources().getDimension(R.dimen.cell_width);
@@ -263,7 +268,7 @@ public class SearchActivity extends Activity {
 		int lastTag = 0;
 		for(int i=0;i<placeArr.length;i++){
 			lastTag = count % 3;
-			if(placeArr[i].equals(rawStart))	continue;
+			if(placeArr[i].equals(rawStart) || !allDesList.contains(placeArr[i].replaceAll("\n", "")))	continue;
 			if(lastTag==0){
 				LayoutParams childParams = new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 				childParams.setMargins((int)margin, (int)margin,(int)margin,(int)margin);

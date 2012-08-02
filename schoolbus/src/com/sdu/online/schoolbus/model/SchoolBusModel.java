@@ -84,4 +84,18 @@ public class SchoolBusModel {
 		Log.v(TAG, "type:"+schedule);
 		return schedule;
 	}
+	
+	public ArrayList<String> getAllDesList(Context context,String start){
+		ArrayList<String> list= new ArrayList<String>();
+		DataBaseHelper dbhelper=new DataBaseHelper(context);
+		SQLiteDatabase sqlDB =dbhelper.getReadableDatabase();
+		String sql = "select to_ from search_table where from_ = ?";
+		Cursor cursor = sqlDB.rawQuery(sql, new String[]{start});
+		while(cursor.moveToNext()){
+			list.add(cursor.getString(cursor.getColumnIndex("to_")));
+		}
+		cursor.deactivate();
+		sqlDB.close();
+		return list;
+	}
 }
