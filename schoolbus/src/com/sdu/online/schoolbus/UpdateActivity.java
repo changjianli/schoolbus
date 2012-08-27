@@ -10,6 +10,7 @@ import java.net.URL;
 
 import com.sdu.online.schoolbus.sql.DataBaseHelper;
 import com.sdu.online.schoolbus.util.FileUtils;
+import com.umeng.analytics.MobclickAgent;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -63,6 +64,7 @@ public class UpdateActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		MobclickAgent.onError(this);
 		setContentView(R.layout.update);
 		findView();
 		storagepath=Environment.getExternalStorageDirectory().toString()+File.separator+"schoolbus";
@@ -107,6 +109,16 @@ public class UpdateActivity extends Activity {
 			}.start();
 		}
 	}
+	
+	public void onResume() {
+	    super.onResume();
+	    MobclickAgent.onResume(this);
+	}
+	public void onPause() {
+	    super.onPause();
+	    MobclickAgent.onPause(this);
+	}
+	
 	public void findView(){
 		pb=(ProgressBar) findViewById(R.id.progressBar);
 		progress=(TextView)findViewById(R.id.progress);

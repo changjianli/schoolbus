@@ -15,6 +15,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import com.sdu.online.schoolbus.R;
 import com.sdu.online.schoolbus.util.FileUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.NotificationType;
 import com.umeng.fb.UMFeedbackService;
 
@@ -25,6 +26,7 @@ public class SplashActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		MobclickAgent.onError(this);
 		setContentView(R.layout.splash);
 		init();
 		String storagepath=Environment.getExternalStorageDirectory().toString()+File.separator+"schoolbus";
@@ -49,6 +51,16 @@ public class SplashActivity extends Activity {
 		//umeng feedback alert
 		 UMFeedbackService.enableNewReplyNotification(this, NotificationType.AlertDialog);
 	}
+	
+	public void onResume() {
+	    super.onResume();
+	    MobclickAgent.onResume(this);
+	}
+	public void onPause() {
+	    super.onPause();
+	    MobclickAgent.onPause(this);
+	}
+	
 	public void createDir(String path){
 		File dir=new File(path);
 		if(!dir.exists()){

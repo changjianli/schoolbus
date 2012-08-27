@@ -1,6 +1,9 @@
 package com.sdu.online.schoolbus;
 
 import java.util.ArrayList;
+
+import com.umeng.analytics.MobclickAgent;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -32,6 +35,7 @@ public class SelectFromActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		 MobclickAgent.onError(this);
 		setContentView(R.layout.select_from_layout);
 		findViews();
 		sp = PreferenceManager.getDefaultSharedPreferences(this);
@@ -48,10 +52,16 @@ public class SelectFromActivity extends Activity {
 	protected void onResume() {
 		//在这里进行主题的初始化
 		initTheme();
+	    MobclickAgent.onResume(this);
 		setListeners();
 		pager.setCurrentItem(page);
 		setPointSelected(page);
 		super.onResume();
+	}
+	
+	public void onPause() {
+	    super.onPause();
+	    MobclickAgent.onPause(this);
 	}
 	
 	@Override

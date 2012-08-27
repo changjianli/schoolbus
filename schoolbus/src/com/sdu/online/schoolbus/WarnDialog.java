@@ -1,5 +1,7 @@
 package com.sdu.online.schoolbus;
 
+import com.umeng.analytics.MobclickAgent;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ public class WarnDialog extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		MobclickAgent.onError(this);
 		setContentView(R.layout.warn);
 		
 		cancleButton = (Button) findViewById(R.id.warn_button_cancle);

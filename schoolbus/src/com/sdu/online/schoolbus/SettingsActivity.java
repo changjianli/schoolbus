@@ -25,6 +25,7 @@ import com.sdu.online.schoolbus.model.UpdateManager;
 import com.sdu.online.schoolbus.model.UpdateManager.APPUpdateInfo;
 import com.sdu.online.schoolbus.model.UpdateManager.DBUpdateInfo;
 import com.sdu.online.schoolbus.util.DialogUtils;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.UMFeedbackService;
 
 public class SettingsActivity extends PreferenceActivity {
@@ -81,6 +82,7 @@ public class SettingsActivity extends PreferenceActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		MobclickAgent.onError(this);
 		getExtra();
 		addPreferencesFromResource(R.xml.preference);
 		findKeys();
@@ -90,9 +92,15 @@ public class SettingsActivity extends PreferenceActivity {
 	@Override
 	protected void onResume() {
 		init();
+	    MobclickAgent.onResume(this);
 		super.onResume();
 	}
-
+	
+	public void onPause() {
+	    super.onPause();
+	    MobclickAgent.onPause(this);
+	}
+	
 	@Override
 	public void finish() {
 		super.finish();

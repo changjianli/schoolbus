@@ -2,6 +2,9 @@ package com.sdu.online.schoolbus;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.umeng.analytics.MobclickAgent;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -20,6 +23,7 @@ public class UserGuideActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		MobclickAgent.onError(this);
 		views = new ArrayList<ImageView>();
 		ImageView iv = new ImageView(this);
 		iv.setBackgroundResource(R.drawable.lead_01);

@@ -4,6 +4,8 @@ import java.util.Calendar;
 import java.util.List;
 import com.sdu.online.schoolbus.model.BusInfo;
 import com.sdu.online.schoolbus.model.SchoolBusModel;
+import com.umeng.analytics.MobclickAgent;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -69,21 +71,24 @@ public class SearchActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		MobclickAgent.onError(this);
 		setContentView(R.layout.search_layout);
 		findViews();
 		setListeners();
 		init();
 	}
-
 	
+	public void onPause() {
+	    super.onPause();
+	    MobclickAgent.onPause(this);
+	}
 	
 	@Override
 	protected void onResume() {
+	    MobclickAgent.onResume(this);
 		initTheme();
 		super.onResume();
 	}
-
-
 
 	private void findViews(){
 		search = (ImageView)findViewById(R.id.search_layout_search_image);
