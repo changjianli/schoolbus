@@ -25,6 +25,7 @@ import com.sdu.online.schoolbus.model.UpdateManager;
 import com.sdu.online.schoolbus.model.UpdateManager.APPUpdateInfo;
 import com.sdu.online.schoolbus.model.UpdateManager.DBUpdateInfo;
 import com.sdu.online.schoolbus.util.DialogUtils;
+import com.umeng.fb.UMFeedbackService;
 
 public class SettingsActivity extends PreferenceActivity {
 
@@ -164,7 +165,7 @@ public class SettingsActivity extends PreferenceActivity {
 			intent.setClass(this, About.class);
 			startActivity(intent);
 		}else if(preference.getKey().equals("contact_us")){
-			emailUs();
+			UMFeedbackService.openUmengFeedbackSDK(this);
 		}else if(preference.getKey().equals("update_db")){
 			if(checkNetWorkState())	showUpdateDialogDB();
 		}else if(preference.getKey().equals("update_app")){
@@ -259,6 +260,8 @@ public class SettingsActivity extends PreferenceActivity {
 		
 	}
 	
+	/**发送邮件反馈的方法
+	 * @deprecated*/
 	private void emailUs(){
 		Intent mEmailIntent =  new Intent(android.content.Intent.ACTION_SENDTO);
 //	    mEmailIntent.setType("gmail----/gmail---");
@@ -275,5 +278,6 @@ public class SettingsActivity extends PreferenceActivity {
 	    	Toast.makeText(this, "您尚未安装gmail或同类软件,无法发送邮件!", Toast.LENGTH_SHORT).show(); 
 	    else startActivity(mEmailIntent);
 	}
+	
 
 }

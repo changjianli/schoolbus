@@ -15,6 +15,8 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import com.sdu.online.schoolbus.R;
 import com.sdu.online.schoolbus.util.FileUtils;
+import com.umeng.fb.NotificationType;
+import com.umeng.fb.UMFeedbackService;
 
 
 public class SplashActivity extends Activity {
@@ -44,6 +46,8 @@ public class SplashActivity extends Activity {
 	         		finish();
 	             }
 	         }, 1250); 
+		//umeng feedback alert
+		 UMFeedbackService.enableNewReplyNotification(this, NotificationType.AlertDialog);
 	}
 	public void createDir(String path){
 		File dir=new File(path);
