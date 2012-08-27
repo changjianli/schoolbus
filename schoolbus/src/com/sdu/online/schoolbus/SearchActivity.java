@@ -362,7 +362,9 @@ public class SearchActivity extends Activity {
 		/**点击之后更改目的地的文字*/
 		public void onClick(View v) {
 			String rawEnd = ((TextView)v).getText().toString();
-			chooseDes.setText(rawEnd);
+			int tmpE = rawEnd.indexOf("\n");
+			chooseDes.setText(rawEnd.substring(0,tmpE));
+			Log.d(TAG, "tmpE:~"+rawEnd.substring(0,tmpE));
 			end = rawEnd.replaceAll("\n", "");
 			/*动画开始*/
 			startDesOutAnim();
