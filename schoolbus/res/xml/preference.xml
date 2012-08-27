@@ -43,7 +43,7 @@
         <Preference
             android:title="新手帮助"
             android:summary="启动新手引导界面"
-            android:key="lead_help"
+            android:key="user_guide"
             />
     </PreferenceCategory>
     

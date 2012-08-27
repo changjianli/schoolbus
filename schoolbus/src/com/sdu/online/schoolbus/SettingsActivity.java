@@ -138,13 +138,13 @@ public class SettingsActivity extends PreferenceActivity {
 		String text = "当前主题: ";
 		switch(sps.getInt("theme", 1)){
 		case 1:
-			text += "01";
+			text += "天空蓝";
 			break;
 		case 2:
-			text += "02";
+			text += "公主粉";
 			break;
 		case 3:
-			text += "03";
+			text += "质感灰";
 			break;
 		}
 		colorTheme.setSummary(text);
@@ -171,6 +171,9 @@ public class SettingsActivity extends PreferenceActivity {
 			if(checkNetWorkState())	showUpdateDialogApp();
 		}else if(preference.getKey().equals("theme")){
 			showSelectThemeDialog();
+		}else if(preference.getKey().equals("user_guide")){
+			Intent intent = new Intent(this,UserGuideActivity.class);
+			startActivity(intent);
 		}
 		listen();
 		return super.onPreferenceTreeClick(preferenceScreen, preference);
@@ -179,7 +182,7 @@ public class SettingsActivity extends PreferenceActivity {
 	/**显示选择主题对话框*/
 	private void showSelectThemeDialog(){
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		String[] items = {"01","02","03"};
+		String[] items = {"天空蓝","公主粉","质感灰"};
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 		int selected= sp.getInt("theme", 1) -1;
 		final Editor editor = sp.edit();

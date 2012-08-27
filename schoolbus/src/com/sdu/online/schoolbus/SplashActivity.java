@@ -22,7 +22,6 @@ public class SplashActivity extends Activity {
 	public static final String DATABASE_FILE_NAME = "bus.db";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.splash);
 		init();
@@ -34,7 +33,6 @@ public class SplashActivity extends Activity {
 			FileUtils.copyfile(this.getAssets().open(DATABASE_FILE_NAME),file, true);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		createDir(storagepath);
@@ -45,8 +43,7 @@ public class SplashActivity extends Activity {
 	         		startActivity(intent);
 	         		finish();
 	             }
-	         }, 2000); 
-		
+	         }, 1250); 
 	}
 	public void createDir(String path){
 		File dir=new File(path);
