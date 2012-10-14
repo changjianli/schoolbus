@@ -79,7 +79,7 @@ public class SplashActivity extends Activity {
 			editor.putString("app_version", info.versionName);
 			Log.v("------", "app_version"+info.versionName);
 		}if(sp.getString("db_version", null) == null){
-			editor.putString("db_version", "20120707");
+			editor.putString("db_version", "20121014");
 		}
 		//初始主题设置，默认主题1
 		if(sp.getInt("theme", 0) == 0){
